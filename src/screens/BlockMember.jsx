@@ -38,7 +38,10 @@ const BlockMember = () => {
       >
         <View style={styles.modalStyle}>
           <ModalHeader text={"Block Member"} />
-          <ModalText text={"Are you sure, you want to block this member?"} />
+          <View style={styles.textContainer}>
+            <ModalText text={"Are you sure, you want to block this member?"} />
+          </View>
+
           <View
             style={{
               flexDirection: "row",
@@ -80,10 +83,7 @@ const styles = StyleSheet.create({
     width: responsiveWidth(90),
     height: responsiveHeight(40),
   },
-  modalText: {
-    marginBottom: 30,
-    marginTop: 30,
-  },
+
   btnContainerLeft: {
     backgroundColor: "#e9f7e9",
     borderWidth: 1,
@@ -97,17 +97,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderColor: "#27ac1f",
   },
-  btnCancel: {
-    width: 140,
-    height: 46,
-
-    backgroundColor: "#e9f7e9",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  btnCancelText: {
-    color: "#27AC1F",
-    fontWeight: "500",
-    fontSize: 16,
+  textContainer: {
+    paddingHorizontal: responsiveWidth(7),
   },
 });

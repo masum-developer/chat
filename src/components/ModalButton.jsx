@@ -1,5 +1,9 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
+import {
+  responsiveHeight,
+  responsiveWidth,
+} from "react-native-responsive-dimensions";
 
 const ModalButton = ({ text, textColor }) => {
   return (
@@ -13,8 +17,8 @@ export default ModalButton;
 
 const styles = StyleSheet.create({
   btn: {
-    width: 140,
-    height: 46,
+    width: responsiveWidth(38),
+    height: responsiveHeight(7),
     alignItems: "center",
     justifyContent: "center",
   },

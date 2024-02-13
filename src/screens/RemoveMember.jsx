@@ -32,7 +32,7 @@ const RemoveMember = () => {
   };
   return (
     <View style={styles.container}>
-      <View style={{ width: "100%", height: 300 }}>
+      <View>
         <TouchableOpacity onPress={toggleModal}>
           <View style={styles.btn}>
             <Text style={styles.text}>Open Modal</Text>
@@ -45,7 +45,9 @@ const RemoveMember = () => {
         >
           <View style={styles.modalStyle}>
             <ModalHeader text={"Remove Member"} />
-            <ModalText text={"Only group admin can remove this member"} />
+            <View style={styles.textContainer}>
+              <ModalText text={"Only group admin can remove this member"} />
+            </View>
             <View
               style={{
                 flexDirection: "row",
@@ -74,7 +76,7 @@ const RemoveMember = () => {
           </View>
         </Modal>
       </View>
-      <View style={{ width: "100%", height: 300 }}>
+      <View>
         <TouchableOpacity onPress={() => navigation.navigate("Home")}>
           <View style={styles.btn}>
             <Text style={styles.text}>Go To Home</Text>
@@ -99,10 +101,7 @@ const styles = StyleSheet.create({
     width: responsiveWidth(90),
     height: responsiveHeight(40),
   },
-  modalText: {
-    marginBottom: 30,
-    marginTop: 30,
-  },
+
   btnContainerLeft: {
     backgroundColor: "#e9f7e9",
     borderWidth: 1,
@@ -111,33 +110,33 @@ const styles = StyleSheet.create({
   },
   btnContainerRight: {
     backgroundColor: "#27ac1f",
-    marginLeft: 20,
+    marginLeft: responsiveWidth(5),
     borderWidth: 1,
     borderRadius: 10,
     borderColor: "#27ac1f",
   },
+  textContainer: {
+    paddingHorizontal: responsiveWidth(7),
+  },
+
   btnCancel: {
-    width: 140,
-    height: 46,
+    width: responsiveWidth(40),
+    height: responsiveHeight(5),
 
     backgroundColor: "#e9f7e9",
     alignItems: "center",
     justifyContent: "center",
   },
-  btnCancelText: {
-    color: "#27AC1F",
-    fontWeight: "500",
-    fontSize: 16,
-  },
+
   btn: {
     width: responsiveWidth(40),
     height: responsiveHeight(5),
     backgroundColor: "#27ac1f",
-    marginBottom: 20,
+    marginBottom: responsiveHeight(3),
   },
   text: {
     alignSelf: "center",
-    paddingTop: 10,
+    paddingTop: responsiveHeight(1),
     color: "#fff",
   },
 });

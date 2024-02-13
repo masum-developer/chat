@@ -2,9 +2,6 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import {
   responsiveHeight,
-  responsiveScreenHeight,
-  responsiveWidth,
-  responsiveFontSize,
   responsiveScreenFontSize,
 } from "react-native-responsive-dimensions";
 
@@ -20,10 +17,10 @@ export default ModalText;
 
 const styles = StyleSheet.create({
   modalText: {
-    marginBottom: 30,
-    marginTop: 30,
+    marginBottom: responsiveHeight(4),
+    marginTop: responsiveHeight(5),
     textAlign: "center",
-    fontSize: responsiveScreenFontSize(3.5),
+    fontSize: responsiveScreenFontSize(3),
     color: "#909090",
   },
 });
