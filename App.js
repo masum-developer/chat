@@ -5,6 +5,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Home from './src/screens/Home';
 import Chat from './src/screens/Chat';
+import BlockMember from './src/screens/BlockMember';
+import RemoveMember from './src/screens/RemoveMember';
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -14,6 +16,8 @@ export default function App() {
         <Stack.Screen name="Home" component={Home}
         >
         </Stack.Screen>
+        <Stack.Screen name="BlockMember" component={BlockMember} options={{ headerShown: false }} />
+        <Stack.Screen name="RemoveMember" component={RemoveMember} options={{ headerShown: false }} />
         <Stack.Screen name="Chat" component={Chat} options={{ headerShown: false }} />
 
       </Stack.Navigator>

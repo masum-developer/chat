@@ -19,7 +19,7 @@ import { useFonts } from "expo-font";
 
 const Chat = () => {
   const [fontsLoaded] = useFonts({
-    Inter: require("../../assets/fonts/Inter-Bold.ttf"),
+    WorkSans: require("../../assets/fonts/Work Sans.ttf"),
   });
 
   const users = [
@@ -205,7 +205,6 @@ const styles = StyleSheet.create({
     paddingRight: responsiveScreenWidth(3),
     marginTop: responsiveScreenHeight(1),
     fontSize: responsiveScreenFontSize(2),
-    fontFamily: "Inter",
   },
   recent: {
     paddingLeft: responsiveScreenWidth(3),
