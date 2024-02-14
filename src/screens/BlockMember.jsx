@@ -22,47 +22,70 @@ import ModalHeader from "../components/ModalHeader";
 import ModalText from "../components/ModalText";
 
 import ModalButton from "../components/ModalButton";
+import { useNavigation } from "@react-navigation/native";
 
 const BlockMember = () => {
+  const navigation = useNavigation();
   const [modalVisible, setModalVisible] = useState(false);
   const toggleModal = () => {
     setModalVisible(!modalVisible);
   };
   return (
     <View style={styles.container}>
-      <Button title="Show Modal" onPress={toggleModal} />
-      <Modal
-        isVisible={modalVisible}
-        onSwipeComplete={() => setModalVisible(false)}
-        swipeDirection="up"
-      >
-        <View style={styles.modalStyle}>
-          <ModalHeader text={"Block Member"} />
-          <View style={styles.textContainer}>
-            <ModalText text={"Are you sure, you want to block this member?"} />
+      <View>
+        <TouchableOpacity onPress={toggleModal}>
+          <View style={styles.btn}>
+            <Text style={styles.text}>Open Modal</Text>
           </View>
+        </TouchableOpacity>
+        <Modal
+          isVisible={modalVisible}
+          onSwipeComplete={() => setModalVisible(false)}
+          swipeDirection="up"
+        >
+          <View style={styles.modalStyle}>
+            <ModalHeader text={"Block Member"} />
+            <View style={styles.textContainer}>
+              <ModalText
+                text={"Are you sure, you want to block this member?"}
+              />
+            </View>
 
-          <View
-            style={{
-              flexDirection: "row",
-              alignSelf: "center",
-            }}
-          >
-            <TouchableOpacity
-              onPress={toggleModal}
-              style={[styles.btnContainerLeft, { backgroundColor: "#e9f7e9" }]}
+            <View
+              style={{
+                flexDirection: "row",
+                alignSelf: "center",
+              }}
             >
-              <ModalButton text={"Cancel"} textColor={"#58bf52"} />
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={[styles.btnContainerRight, { backgroundColor: "#27ac1f" }]}
-              onPress={toggleModal}
-            >
-              <ModalButton text={"Ok"} textColor={"#f1faf1"} />
-            </TouchableOpacity>
+              <TouchableOpacity
+                onPress={toggleModal}
+                style={[
+                  styles.btnContainerLeft,
+                  { backgroundColor: "#e9f7e9" },
+                ]}
+              >
+                <ModalButton text={"Cancel"} textColor={"#58bf52"} />
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[
+                  styles.btnContainerRight,
+                  { backgroundColor: "#27ac1f" },
+                ]}
+                onPress={toggleModal}
+              >
+                <ModalButton text={"Ok"} textColor={"#f1faf1"} />
+              </TouchableOpacity>
+            </View>
           </View>
-        </View>
-      </Modal>
+        </Modal>
+      </View>
+      <View>
+        <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+          <View style={styles.btn}>
+            <Text style={styles.text}>Go To Home</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -73,7 +96,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#FFFFFF",
-    marginTop: 60,
+    justifyContent: "center",
+    alignItems: "center",
   },
   modalStyle: {
     borderWidth: 1,
@@ -99,5 +123,16 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     paddingHorizontal: responsiveWidth(7),
+  },
+  btn: {
+    width: responsiveWidth(40),
+    height: responsiveHeight(5),
+    backgroundColor: "#27ac1f",
+    marginBottom: responsiveHeight(3),
+  },
+  text: {
+    alignSelf: "center",
+    paddingTop: responsiveHeight(1),
+    color: "#fff",
   },
 });

@@ -91,7 +91,10 @@ export default RemoveMember;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 60,
+    flex: 1,
+    backgroundColor: "#FFFFFF",
+    justifyContent: "center",
+    alignItems: "center",
   },
   modalStyle: {
     borderWidth: 1,
