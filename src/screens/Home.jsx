@@ -22,6 +22,16 @@ const Home = () => {
           <Text style={styles.text}>Go To Remove Member</Text>
         </View>
       </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate("GroupImage")}>
+        <View style={styles.btn}>
+          <Text style={styles.text}>Go To Group Chat</Text>
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate("GroupImageTake")}>
+        <View style={styles.btn}>
+          <Text style={styles.text}>Go To Group Chat Image</Text>
+        </View>
+      </TouchableOpacity>
     </View>
   );
 };

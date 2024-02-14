@@ -7,6 +7,8 @@ import Home from './src/screens/Home';
 import Chat from './src/screens/Chat';
 import BlockMember from './src/screens/BlockMember';
 import RemoveMember from './src/screens/RemoveMember';
+import GroupImage from './src/screens/GroupImage';
+import GroupImageTake from './src/screens/GroupImageTake';
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -18,6 +20,8 @@ export default function App() {
         </Stack.Screen>
         <Stack.Screen name="BlockMember" component={BlockMember} options={{ headerShown: false }} />
         <Stack.Screen name="RemoveMember" component={RemoveMember} options={{ headerShown: false }} />
+        <Stack.Screen name="GroupImage" component={GroupImage} options={{ headerShown: false }} />
+        <Stack.Screen name="GroupImageTake" component={GroupImageTake} options={{ headerShown: false }} />
         <Stack.Screen name="Chat" component={Chat} options={{ headerShown: false }} />
 
       </Stack.Navigator>
