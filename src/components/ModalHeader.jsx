@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
     fontSize: responsiveScreenFontSize(3),
     color: "#474748",
     marginLeft: responsiveScreenWidth(2),
+    fontWeight: "500",
   },
   line: {
     borderBottomWidth: 1,
