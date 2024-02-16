@@ -1,19 +1,21 @@
 import React from "react";
-import { Image, Text, View, StyleSheet } from "react-native";
+import { Image, Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import {
   responsiveScreenHeight,
   responsiveScreenWidth,
   responsiveScreenFontSize,
 } from "react-native-responsive-dimensions";
 
-const ModalHeader = ({ text }) => {
+const ModalHeader = ({ text, toggleModal }) => {
   return (
     <View style={styles.container}>
       <View style={styles.headerTitle}>
-        <Image
-          style={styles.headerImage}
-          source={require("../../assets/image/leftarrow.png")}
-        />
+        <TouchableOpacity onPress={toggleModal}>
+          <Image
+            style={styles.headerImage}
+            source={require("../../assets/image/leftarrow.png")}
+          />
+        </TouchableOpacity>
         <Text style={styles.headerText}>{text}</Text>
       </View>
       <View style={styles.line} />

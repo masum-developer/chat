@@ -42,9 +42,10 @@ const RemoveMember = () => {
           isVisible={modalVisible}
           onSwipeComplete={() => setModalVisible(false)}
           swipeDirection="up"
+          onBackdropPress={() => setModalVisible(false)}
         >
           <View style={styles.modalStyle}>
-            <ModalHeader text={"Remove Member"} />
+            <ModalHeader text={"Remove Member"} toggleModal={toggleModal} />
             <View style={styles.textContainer}>
               <ModalText text={"Only group admin can remove this member"} />
             </View>

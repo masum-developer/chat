@@ -42,9 +42,10 @@ const BlockMember = () => {
           isVisible={modalVisible}
           onSwipeComplete={() => setModalVisible(false)}
           swipeDirection="up"
+          onBackdropPress={() => setModalVisible(false)}
         >
           <View style={styles.modalStyle}>
-            <ModalHeader text={"Block Member"} />
+            <ModalHeader text={"Block Member"} toggleModal={toggleModal} />
             <View style={styles.textContainer}>
               <ModalText
                 text={"Are you sure, you want to block this member?"}
