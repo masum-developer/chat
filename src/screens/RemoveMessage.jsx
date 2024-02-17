@@ -9,12 +9,8 @@ import {
 
 import Modal from "react-native-modal";
 import { useNavigation } from "@react-navigation/native";
-
-import { AntDesign } from "@expo/vector-icons";
-import { Ionicons } from "@expo/vector-icons";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-
 import TrashIconComponent from "../components/TrashIconComponent";
+import { useFonts } from "expo-font";
 
 const RemoveMessage = () => {
   const navigation = useNavigation();
@@ -22,9 +18,12 @@ const RemoveMessage = () => {
   const toggleModal = () => {
     setModalVisible(!modalVisible);
   };
-
-  const m = "#EEEEEE";
-
+  const [fontsLoaded] = useFonts({
+    "WorkSans-Regular": require("../../assets/Fonts/WorkSans-Regular.ttf"),
+  });
+  if (!fontsLoaded) {
+    return <Text>Loading Font...</Text>;
+  }
   return (
     <View style={styles.container}>
       <View>
@@ -52,8 +51,6 @@ const RemoveMessage = () => {
                   source={require("../../assets/image/close.png")}
                 />
               </TouchableOpacity>
-
-              {/* <MaterialCommunityIcons name="close-circle" size={24} color={m} /> */}
             </View>
             <View style={styles.modalBottom}>
               <Text style={styles.btnText}>Remove for everyone</Text>
@@ -88,8 +85,8 @@ const styles = StyleSheet.create({
     borderColor: "gray",
     backgroundColor: "#FFFFFF",
     width: responsiveWidth(90),
-    height: responsiveHeight(25),
-    paddingHorizontal: 10,
+    height: responsiveHeight(23),
+    paddingHorizontal: responsiveWidth(2),
   },
   modalTop: {
     flexDirection: "row",
@@ -100,10 +97,13 @@ const styles = StyleSheet.create({
   },
 
   modalText: {
-    marginTop: 30,
-    marginRight: 15,
-    fontSize: 24,
+    marginTop: responsiveHeight(4),
+    marginRight: responsiveWidth(4),
+    fontSize: responsiveFontSize(2.2),
     textAlign: "center",
+    fontFamily: "WorkSans-Regular",
+    fontWeight: "500",
+    color: "rgba(0, 0, 0, 0.8)",
   },
   modalBottom: {
     flexDirection: "row",
@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
     width: responsiveWidth(80),
     height: responsiveHeight(6),
     backgroundColor: "#27ac1f",
-    marginTop: responsiveHeight(5),
+    marginTop: responsiveHeight(4),
     alignSelf: "center",
     borderRadius: 8,
     alignItems: "center",
@@ -121,8 +121,9 @@ const styles = StyleSheet.create({
 
   btnText: {
     color: "#FF0000",
+    fontFamily: "WorkSans-Regular",
     fontWeight: "500",
-    fontSize: 18,
+    fontSize: responsiveFontSize(2),
   },
   btn: {
     width: responsiveWidth(40),

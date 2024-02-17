@@ -34,7 +34,10 @@ const GroupImage = () => {
         >
           <View style={styles.modalStyle}>
             <View>
-              <GroupImageHeader text={"Group Image"} />
+              <GroupImageHeader
+                text={"Group Image"}
+                toggleModal={toggleModal}
+              />
 
               <View style={styles.imageContainer}>
                 <FontAwesome name="group" size={150} color="black" />
@@ -56,7 +59,9 @@ const GroupImage = () => {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: responsiveHeight(10),
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
   },
   btn: {
     width: responsiveWidth(40),

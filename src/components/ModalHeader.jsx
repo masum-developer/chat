@@ -5,16 +5,14 @@ import {
   responsiveScreenWidth,
   responsiveScreenFontSize,
 } from "react-native-responsive-dimensions";
+import LeftArrowSvgComponent from "./LeftArrowSvgComponent";
 
 const ModalHeader = ({ text, toggleModal }) => {
   return (
     <View style={styles.container}>
       <View style={styles.headerTitle}>
         <TouchableOpacity onPress={toggleModal}>
-          <Image
-            style={styles.headerImage}
-            source={require("../../assets/image/leftarrow.png")}
-          />
+          <LeftArrowSvgComponent />
         </TouchableOpacity>
         <Text style={styles.headerText}>{text}</Text>
       </View>

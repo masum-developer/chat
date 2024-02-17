@@ -23,6 +23,7 @@ import ModalText from "../components/ModalText";
 
 import ModalButton from "../components/ModalButton";
 import { useNavigation } from "@react-navigation/native";
+import { useFonts } from "expo-font";
 
 const BlockMember = () => {
   const navigation = useNavigation();
@@ -30,6 +31,12 @@ const BlockMember = () => {
   const toggleModal = () => {
     setModalVisible(!modalVisible);
   };
+  const [fontsLoaded] = useFonts({
+    "Inter-Regular": require("../../assets/Fonts/Inter-Regular.ttf"),
+  });
+  if (!fontsLoaded) {
+    return <Text>Loading Font...</Text>;
+  }
   return (
     <View style={styles.container}>
       <View>
@@ -135,5 +142,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     paddingTop: responsiveHeight(1),
     color: "#fff",
+    fontFamily: "Inter-Regular",
+    fontWeight: "500",
   },
 });

@@ -124,9 +124,7 @@ const AddMembers = () => {
                           style={styles.user}
                           source={{ uri: item.image }}
                         />
-                        <View
-                          style={{ position: "absolute", left: 38, top: 20 }}
-                        >
+                        <View style={styles.smallCircle}>
                           <AddMembersCircleSvgComponent />
                         </View>
                         <Text style={styles.userName}>{item.name}</Text>
@@ -162,7 +160,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: responsiveWidth(3),
   },
   modalContainer: {
-    marginTop: 60,
+    marginTop: responsiveHeight(7),
   },
   modalStyle: {
     borderWidth: 1,
@@ -170,26 +168,10 @@ const styles = StyleSheet.create({
     borderColor: "gray",
     backgroundColor: "#FFFFFF",
     width: responsiveWidth(90),
-    height: responsiveHeight((650 / 812) * 100),
+    height: responsiveHeight(76),
     paddingHorizontal: responsiveWidth(4),
   },
 
-  btnContainerLeft: {
-    backgroundColor: "#e9f7e9",
-    borderWidth: 1,
-    borderRadius: 10,
-    borderColor: "#e9f7e9",
-  },
-  btnContainerRight: {
-    backgroundColor: "#27ac1f",
-    marginLeft: 20,
-    borderWidth: 1,
-    borderRadius: 10,
-    borderColor: "#27ac1f",
-  },
-  textContainer: {
-    paddingHorizontal: responsiveWidth(7),
-  },
   btn: {
     width: responsiveWidth(40),
     height: responsiveHeight(5),
@@ -228,7 +210,7 @@ const styles = StyleSheet.create({
   },
   allContact: {
     color: "#0B2A46",
-    paddingTop: 20,
+    paddingTop: responsiveScreenHeight(2),
     fontFamily: "WorkSans-Regular",
     fontWeight: "500",
     fontSize: responsiveFontSize(2),
@@ -253,5 +235,10 @@ const styles = StyleSheet.create({
     fontSize: responsiveFontSize(2),
     fontFamily: "WorkSans-Regular",
     fontWeight: "500",
+  },
+  smallCircle: {
+    position: "absolute",
+    left: responsiveWidth(7),
+    top: responsiveScreenHeight(2),
   },
 });

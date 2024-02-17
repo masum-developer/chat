@@ -90,10 +90,14 @@ const GroupImageTake = () => {
           isVisible={modalVisible}
           onSwipeComplete={() => setModalVisible(false)}
           swipeDirection="up"
+          onBackdropPress={() => setModalVisible(false)}
         >
           <View style={styles.modalStyle}>
             <View>
-              <GroupImageTakeHeader text={"Group Image"} />
+              <GroupImageTakeHeader
+                text={"Group Image"}
+                toggleModal={toggleModal}
+              />
 
               <View style={styles.imageContainer}>
                 <View style={styles.cameraStyle}>

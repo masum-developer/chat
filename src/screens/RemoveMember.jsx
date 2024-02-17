@@ -30,6 +30,7 @@ const RemoveMember = () => {
   const toggleModal = () => {
     setModalVisible(!modalVisible);
   };
+
   return (
     <View style={styles.container}>
       <View>
@@ -142,5 +143,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     paddingTop: responsiveHeight(1),
     color: "#fff",
+    fontFamily: "Inter-Regular",
+    fontWeight: "500",
   },
 });
