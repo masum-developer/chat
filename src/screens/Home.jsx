@@ -32,6 +32,16 @@ const Home = () => {
           <Text style={styles.text}>Go To Group Chat Image</Text>
         </View>
       </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate("RemoveMessage")}>
+        <View style={styles.btn}>
+          <Text style={styles.text}>Go To Remove Message</Text>
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate("AddMembers")}>
+        <View style={styles.btn}>
+          <Text style={styles.text}>Go To Add Members</Text>
+        </View>
+      </TouchableOpacity>
     </View>
   );
 };

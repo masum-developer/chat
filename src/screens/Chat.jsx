@@ -18,9 +18,7 @@ import {
 import { useFonts } from "expo-font";
 
 const Chat = () => {
-  const [fontsLoaded] = useFonts({
-    WorkSans: require("../../assets/fonts/Work Sans.ttf"),
-  });
+  const [fontsLoaded] = useFonts({});
 
   const users = [
     {
@@ -217,6 +215,7 @@ const styles = StyleSheet.create({
     opacity: 60,
     fontSize: responsiveScreenFontSize(2.7),
     fontWeight: "500",
+    fontFamily: "WorkSans",
   },
   user: {
     width: responsiveScreenWidth(8),

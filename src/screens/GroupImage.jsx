@@ -30,6 +30,7 @@ const GroupImage = () => {
           isVisible={modalVisible}
           onSwipeComplete={() => setModalVisible(false)}
           swipeDirection="up"
+          onBackdropPress={() => setModalVisible(false)}
         >
           <View style={styles.modalStyle}>
             <View>
@@ -56,8 +57,6 @@ const GroupImage = () => {
 const styles = StyleSheet.create({
   container: {
     marginTop: responsiveHeight(10),
-    justifyContent: "center",
-    alignItems: "center",
   },
   btn: {
     width: responsiveWidth(40),
