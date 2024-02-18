@@ -11,6 +11,7 @@ import Modal from "react-native-modal";
 import { useNavigation } from "@react-navigation/native";
 import TrashIconComponent from "../components/TrashIconComponent";
 import { useFonts } from "expo-font";
+import CloseIconSvgComponent from "../svg/CloseIconSvgComponent";
 
 const RemoveMessage = () => {
   const navigation = useNavigation();
@@ -20,6 +21,9 @@ const RemoveMessage = () => {
   };
   const [fontsLoaded] = useFonts({
     "WorkSans-Regular": require("../../assets/Fonts/WorkSans-Regular.ttf"),
+    "WorkSans-Medium": require("../../assets/Fonts/WorkSans-Medium.ttf"),
+    "WorkSans-Black": require("../../assets/Fonts/WorkSans-Black.ttf"),
+    
   });
   if (!fontsLoaded) {
     return <Text>Loading Font...</Text>;
@@ -45,16 +49,13 @@ const RemoveMessage = () => {
                   Do you want to remove this message?
                 </Text>
               </View>
-              <TouchableOpacity onPress={toggleModal}>
-                <Image
-                  style={{ marginTop: 14 }}
-                  source={require("../../assets/image/close.png")}
-                />
+              <TouchableOpacity style={{marginTop:10, marginRight:2}} onPress={toggleModal}>
+                <CloseIconSvgComponent/>
               </TouchableOpacity>
             </View>
             <View style={styles.modalBottom}>
               <Text style={styles.btnText}>Remove for everyone</Text>
-              <TrashIconComponent />
+              <TrashIconComponent/>
             </View>
           </View>
         </Modal>
@@ -81,12 +82,13 @@ const styles = StyleSheet.create({
   },
   modalStyle: {
     borderWidth: 1,
-    borderRadius: 20,
+    borderRadius: 10,
     borderColor: "gray",
     backgroundColor: "#FFFFFF",
     width: responsiveWidth(90),
-    height: responsiveHeight(23),
+    height: responsiveHeight(19),
     paddingHorizontal: responsiveWidth(2),
+    marginBottom:responsiveHeight(8)
   },
   modalTop: {
     flexDirection: "row",
@@ -97,11 +99,11 @@ const styles = StyleSheet.create({
   },
 
   modalText: {
-    marginTop: responsiveHeight(4),
-    marginRight: responsiveWidth(4),
-    fontSize: responsiveFontSize(2.2),
+    marginTop: responsiveHeight(3),
+    marginRight: responsiveWidth(5),
+    fontSize: responsiveFontSize(2.3),
     textAlign: "center",
-    fontFamily: "WorkSans-Regular",
+    fontFamily: "WorkSans-Medium",
     fontWeight: "500",
     color: "rgba(0, 0, 0, 0.8)",
   },
@@ -109,9 +111,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     width: responsiveWidth(80),
-    height: responsiveHeight(6),
+    height: responsiveHeight(5),
     backgroundColor: "#27ac1f",
-    marginTop: responsiveHeight(4),
+    marginTop: responsiveHeight(2),
     alignSelf: "center",
     borderRadius: 8,
     alignItems: "center",
@@ -121,9 +123,9 @@ const styles = StyleSheet.create({
 
   btnText: {
     color: "#FF0000",
-    fontFamily: "WorkSans-Regular",
+    fontFamily: "WorkSans-Medium",
     fontWeight: "500",
-    fontSize: responsiveFontSize(2),
+    fontSize: responsiveFontSize(1.7),
   },
   btn: {
     width: responsiveWidth(40),

@@ -21,59 +21,33 @@ import Modal from "react-native-modal";
 import AddMembersHeader from "../components/AddMembersHeader";
 
 import AddMembersCircleSvgComponent from "../components/AddMembersCircleSvgComponent";
-import CheckSvgIcon from "../components/CheckSvgIcon";
-import SearchSvgComponent from "../components/SearchSvgComponent";
 import { useFonts } from "expo-font";
+import useList from "../utils/data";
+import SearchClickIconSvgComponent from "../svg/SearchClickIconSvgComponent";
+import UncheckIconSvgComponent from "../svg/UncheckIconSvgComponent";
+import CheckIconSvgComponent from "../svg/CheckIconSvgComponent";
 const AddMembers = () => {
   const navigation = useNavigation();
   const [modalVisible, setModalVisible] = useState(false);
+  const [users, setUsers] = useState(useList)
   const toggleModal = () => {
     setModalVisible(!modalVisible);
   };
-  const users = [
-    {
-      id: 1,
-      name: "Priyanka Parvej",
-      image: "https://i.ibb.co/h9YTkLN/priyankaparvej.png",
-    },
-    {
-      id: 2,
-      name: "Priyanka Parvej",
-      image: "https://i.ibb.co/h9YTkLN/priyankaparvej.png",
-    },
-    {
-      id: 3,
-      name: "Priyanka Parvej",
-      image: "https://i.ibb.co/h9YTkLN/priyankaparvej.png",
-    },
-    {
-      id: 4,
-      name: "Priyanka Parvej",
-      image: "https://i.ibb.co/h9YTkLN/priyankaparvej.png",
-    },
-    {
-      id: 5,
-      name: "Priyanka Parvej",
-      image: "https://i.ibb.co/h9YTkLN/priyankaparvej.png",
-    },
-    {
-      id: 6,
-      name: "Priyanka Parvej",
-      image: "https://i.ibb.co/h9YTkLN/priyankaparvej.png",
-    },
-    {
-      id: 7,
-      name: "Priyanka Parvej",
-      image: "https://i.ibb.co/h9YTkLN/priyankaparvej.png",
-    },
-    {
-      id: 8,
-      name: "Priyanka Parvej",
-      image: "https://i.ibb.co/h9YTkLN/priyankaparvej.png",
-    },
-  ];
+
+  //................... For handling checkbox toggle....................//
+  const handleCheckboxToggle = (userId) => {
+    setUsers(users.map(user =>
+      user.id === userId ? { ...user, checked: !user.checked } : user
+    ));
+  };
+
+  //.......................For using google font................// 
   const [fontsLoaded] = useFonts({
     "WorkSans-Regular": require("../../assets/Fonts/WorkSans-Regular.ttf"),
+    "WorkSans-Black": require("../../assets/Fonts/WorkSans-Black.ttf"),
+    "WorkSans-Medium": require("../../assets/Fonts/WorkSans-Medium.ttf"),
+    
+    
   });
   if (!fontsLoaded) {
     return <Text>Loading Font...</Text>;
@@ -86,6 +60,7 @@ const AddMembers = () => {
             <Text style={styles.text}>Open Modal</Text>
           </View>
         </TouchableOpacity>
+        {/** Modal start here **/}
         <Modal
           isVisible={modalVisible}
           onSwipeComplete={() => setModalVisible(false)}
@@ -107,8 +82,7 @@ const AddMembers = () => {
                     placeholder="Search"
                     placeholderTextColor="rgba(99, 99, 99, 1)"
                   />
-
-                  <SearchSvgComponent />
+                  <SearchClickIconSvgComponent/>
                 </View>
               </View>
               <View>
@@ -117,18 +91,22 @@ const AddMembers = () => {
               <View>
                 {/* Show User List*/}
                 <View style={styles.userList}>
-                  {users.map((item, index) => (
-                    <View key={item.id}>
+                  {users.map((user, index) => (
+                    <View key={user.id}>
                       <View style={styles.imageContainer}>
                         <Image
                           style={styles.user}
-                          source={{ uri: item.image }}
+                          source={{ uri: user.image }}
                         />
                         <View style={styles.smallCircle}>
                           <AddMembersCircleSvgComponent />
                         </View>
-                        <Text style={styles.userName}>{item.name}</Text>
-                        <CheckSvgIcon />
+                        <Text style={styles.userName}>{user.name}</Text>
+                        {/* Show Check box icon by help of svg */}
+                        <TouchableOpacity onPress={() => handleCheckboxToggle(user.id)}>
+                          {user.checked ? <CheckIconSvgComponent /> : <UncheckIconSvgComponent/>}
+                        </TouchableOpacity>
+
                       </View>
                     </View>
                   ))}
@@ -137,6 +115,7 @@ const AddMembers = () => {
             </View>
           </ScrollView>
         </Modal>
+        {/** Modal end here **/}
       </View>
       <View>
         <TouchableOpacity onPress={() => navigation.navigate("Home")}>
@@ -160,16 +139,18 @@ const styles = StyleSheet.create({
     paddingHorizontal: responsiveWidth(3),
   },
   modalContainer: {
-    marginTop: responsiveHeight(7),
+    marginTop: responsiveHeight(6),
+    
   },
   modalStyle: {
-    borderWidth: 1,
-    borderRadius: 20,
+    borderWidth: 2,
+    borderRightWidth: 2,
+    borderRadius: 15,
     borderColor: "gray",
     backgroundColor: "#FFFFFF",
+    paddingHorizontal: responsiveWidth(4.5),
     width: responsiveWidth(90),
-    height: responsiveHeight(76),
-    paddingHorizontal: responsiveWidth(4),
+    height: responsiveHeight(69.5),
   },
 
   btn: {
@@ -189,16 +170,22 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     backgroundColor: "#F2F2F2",
-    padding: responsiveWidth(1.5),
+    
+    padding: responsiveWidth(1.9),
     paddingHorizontal: responsiveWidth(3.3),
     borderWidth: 1,
     borderColor: "rgba(0, 0, 0, 0.1)",
     flex: 1,
+    
     borderRadius: responsiveWidth(2),
+    height:responsiveScreenHeight(5.8)
   },
 
   textInput: {
-    fontSize: responsiveFontSize(1.6),
+    fontSize: responsiveFontSize(1.8),
+    width:responsiveWidth(15),
+    fontFamily: "WorkSans-Regular",
+    color:'#0B2A46',
   },
 
   topContainer: {
@@ -206,17 +193,17 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     gap: responsiveWidth(2.2),
     alignItems: "center",
-    paddingTop: responsiveHeight(3),
+    paddingTop: responsiveHeight(2.5),
   },
   allContact: {
     color: "#0B2A46",
-    paddingTop: responsiveScreenHeight(2),
-    fontFamily: "WorkSans-Regular",
+    paddingTop: responsiveScreenHeight(1.8),
+    fontFamily: "WorkSans-Medium",
     fontWeight: "500",
-    fontSize: responsiveFontSize(2),
+    fontSize: responsiveFontSize(1.8),
   },
   userList: {
-    marginTop: responsiveScreenHeight(1.5),
+    marginTop: responsiveScreenHeight(1),
   },
   imageContainer: {
     paddingLeft: responsiveScreenWidth(1),
@@ -227,18 +214,19 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   user: {
-    width: responsiveScreenWidth(8),
-    height: responsiveScreenWidth(8),
+    width: responsiveScreenWidth(6.5),
+    height: responsiveScreenWidth(6.7),
   },
   userName: {
-    marginRight: responsiveWidth(25),
-    fontSize: responsiveFontSize(2),
-    fontFamily: "WorkSans-Regular",
+    marginRight: responsiveWidth(32),
+    fontSize: responsiveFontSize(1.8),
+    fontFamily: "WorkSans-Medium",
     fontWeight: "500",
   },
   smallCircle: {
     position: "absolute",
-    left: responsiveWidth(7),
-    top: responsiveScreenHeight(2),
+    left: responsiveWidth(5.5),
+    top: responsiveScreenHeight(1.8),
+    padding:1
   },
 });

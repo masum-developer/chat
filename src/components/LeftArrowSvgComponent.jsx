@@ -4,7 +4,7 @@ import Svg, { Path } from "react-native-svg";
 const LeftArrowSvgComponent = () => (
   <Svg
     width="20"
-    height="14"
+    height="18"
     viewBox="0 0 20 14"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
