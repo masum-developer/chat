@@ -19,35 +19,34 @@ import {
 } from "react-native-responsive-dimensions";
 import Modal from "react-native-modal";
 import AddMembersHeader from "../components/AddMembersHeader";
-
-import AddMembersCircleSvgComponent from "../components/AddMembersCircleSvgComponent";
 import { useFonts } from "expo-font";
 import useList from "../utils/data";
 import SearchClickIconSvgComponent from "../svg/SearchClickIconSvgComponent";
 import UncheckIconSvgComponent from "../svg/UncheckIconSvgComponent";
 import CheckIconSvgComponent from "../svg/CheckIconSvgComponent";
+import CircleIconSvgComponent from "../svg/CircleIconSvgComponent";
 const AddMembers = () => {
   const navigation = useNavigation();
   const [modalVisible, setModalVisible] = useState(false);
-  const [users, setUsers] = useState(useList)
+  const [users, setUsers] = useState(useList);
   const toggleModal = () => {
     setModalVisible(!modalVisible);
   };
 
   //................... For handling checkbox toggle....................//
   const handleCheckboxToggle = (userId) => {
-    setUsers(users.map(user =>
-      user.id === userId ? { ...user, checked: !user.checked } : user
-    ));
+    setUsers(
+      users.map((user) =>
+        user.id === userId ? { ...user, checked: !user.checked } : user
+      )
+    );
   };
 
-  //.......................For using google font................// 
+  //.......................For using google font................//
   const [fontsLoaded] = useFonts({
     "WorkSans-Regular": require("../../assets/Fonts/WorkSans-Regular.ttf"),
     "WorkSans-Black": require("../../assets/Fonts/WorkSans-Black.ttf"),
     "WorkSans-Medium": require("../../assets/Fonts/WorkSans-Medium.ttf"),
-    
-    
   });
   if (!fontsLoaded) {
     return <Text>Loading Font...</Text>;
@@ -82,7 +81,7 @@ const AddMembers = () => {
                     placeholder="Search"
                     placeholderTextColor="rgba(99, 99, 99, 1)"
                   />
-                  <SearchClickIconSvgComponent/>
+                  <SearchClickIconSvgComponent />
                 </View>
               </View>
               <View>
@@ -99,14 +98,19 @@ const AddMembers = () => {
                           source={{ uri: user.image }}
                         />
                         <View style={styles.smallCircle}>
-                          <AddMembersCircleSvgComponent />
+                          <CircleIconSvgComponent />
                         </View>
                         <Text style={styles.userName}>{user.name}</Text>
                         {/* Show Check box icon by help of svg */}
-                        <TouchableOpacity onPress={() => handleCheckboxToggle(user.id)}>
-                          {user.checked ? <CheckIconSvgComponent /> : <UncheckIconSvgComponent/>}
+                        <TouchableOpacity
+                          onPress={() => handleCheckboxToggle(user.id)}
+                        >
+                          {user.checked ? (
+                            <CheckIconSvgComponent />
+                          ) : (
+                            <UncheckIconSvgComponent />
+                          )}
                         </TouchableOpacity>
-
                       </View>
                     </View>
                   ))}
@@ -140,7 +144,6 @@ const styles = StyleSheet.create({
   },
   modalContainer: {
     marginTop: responsiveHeight(6),
-    
   },
   modalStyle: {
     borderWidth: 2,
@@ -170,22 +173,22 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     backgroundColor: "#F2F2F2",
-    
+
     padding: responsiveWidth(1.9),
     paddingHorizontal: responsiveWidth(3.3),
     borderWidth: 1,
     borderColor: "rgba(0, 0, 0, 0.1)",
     flex: 1,
-    
+
     borderRadius: responsiveWidth(2),
-    height:responsiveScreenHeight(5.8)
+    height: responsiveScreenHeight(5.8),
   },
 
   textInput: {
     fontSize: responsiveFontSize(1.8),
-    width:responsiveWidth(15),
+    width: responsiveWidth(15),
     fontFamily: "WorkSans-Regular",
-    color:'#0B2A46',
+    color: "#0B2A46",
   },
 
   topContainer: {
@@ -227,6 +230,6 @@ const styles = StyleSheet.create({
     position: "absolute",
     left: responsiveWidth(5.5),
     top: responsiveScreenHeight(1.8),
-    padding:1
+    padding: 1,
   },
 });
