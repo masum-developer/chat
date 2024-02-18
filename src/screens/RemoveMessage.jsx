@@ -9,9 +9,9 @@ import {
 
 import Modal from "react-native-modal";
 import { useNavigation } from "@react-navigation/native";
-import TrashIconComponent from "../components/TrashIconComponent";
 import { useFonts } from "expo-font";
 import CloseIconSvgComponent from "../svg/CloseIconSvgComponent";
+import TrashIconSvgComponent from "../svg/TrashIconSvgComponent";
 
 const RemoveMessage = () => {
   const navigation = useNavigation();
@@ -23,7 +23,6 @@ const RemoveMessage = () => {
     "WorkSans-Regular": require("../../assets/Fonts/WorkSans-Regular.ttf"),
     "WorkSans-Medium": require("../../assets/Fonts/WorkSans-Medium.ttf"),
     "WorkSans-Black": require("../../assets/Fonts/WorkSans-Black.ttf"),
-    
   });
   if (!fontsLoaded) {
     return <Text>Loading Font...</Text>;
@@ -49,13 +48,16 @@ const RemoveMessage = () => {
                   Do you want to remove this message?
                 </Text>
               </View>
-              <TouchableOpacity style={{marginTop:10, marginRight:2}} onPress={toggleModal}>
-                <CloseIconSvgComponent/>
+              <TouchableOpacity
+                style={{ marginTop: 10, marginRight: 2 }}
+                onPress={toggleModal}
+              >
+                <CloseIconSvgComponent />
               </TouchableOpacity>
             </View>
             <View style={styles.modalBottom}>
               <Text style={styles.btnText}>Remove for everyone</Text>
-              <TrashIconComponent/>
+              <TrashIconSvgComponent />
             </View>
           </View>
         </Modal>
@@ -88,7 +90,7 @@ const styles = StyleSheet.create({
     width: responsiveWidth(90),
     height: responsiveHeight(19),
     paddingHorizontal: responsiveWidth(2),
-    marginBottom:responsiveHeight(8)
+    marginBottom: responsiveHeight(8),
   },
   modalTop: {
     flexDirection: "row",

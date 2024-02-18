@@ -8,6 +8,7 @@ import {
 } from "react-native-responsive-dimensions";
 import { FontAwesome } from "@expo/vector-icons";
 import GroupImageHeader from "../components/GroupImageHeader";
+import GroupIconSvgComponent from "../svg/GroupIconSvgComponent";
 
 const GroupImage = () => {
   const navigation = useNavigation();
@@ -41,6 +42,7 @@ const GroupImage = () => {
 
               <View style={styles.imageContainer}>
                 <FontAwesome name="group" size={150} color="black" />
+                {/* Group image svg icon is not working */}
               </View>
             </View>
           </View>

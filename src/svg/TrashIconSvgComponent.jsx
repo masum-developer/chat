@@ -1,7 +1,7 @@
-import * as React from "react"
-import Svg, { Path } from "react-native-svg"
+import * as React from "react";
+import Svg, { Path } from "react-native-svg";
 
-function TrashIconComponent(props) {
+function TrashIconSvgComponent(props) {
   return (
     <Svg
       width={20}
@@ -26,7 +26,7 @@ function TrashIconComponent(props) {
         strokeLinejoin="round"
       />
     </Svg>
-  )
+  );
 }
 
-export default TrashIconComponent
+export default TrashIconSvgComponent;
