@@ -1,23 +1,39 @@
 import React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 import {
     responsiveScreenHeight,
     responsiveScreenWidth,
-    responsiveScreenFontSize
+    responsiveScreenFontSize,
+    responsiveHeight
 } from "react-native-responsive-dimensions";
 import LeftArrowIconSvgComponent from '../svg/LeftArrowIconSvgComponent';
+import { useNavigation } from '@react-navigation/native';
+import { useFonts } from 'expo-font';
 
-const ViewHeader = ({title}) => {
+const ViewHeader = ({ title }) => {
+
+    const navigation = useNavigation();
+    const [fontsLoaded] = useFonts({
+        "Inter-SemiBold": require("../../assets/Fonts/Inter-SemiBold.ttf"),
+    });
+    if (!fontsLoaded) {
+        return <Text>Loading Font...</Text>;
+    }
     return (
         <View style={styles.header}>
             <View style={styles.headerContent}>
-            <LeftArrowIconSvgComponent/>
-                <Text style={styles.sendto}>{title}</Text>
+                <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+                    <LeftArrowIconSvgComponent />
+                </TouchableOpacity>
+                <Text style={styles.title}>{title}</Text>
             </View>
         </View>
     );
 };
+
+
+
 
 export default ViewHeader;
 
@@ -25,19 +41,23 @@ export default ViewHeader;
 const styles = StyleSheet.create({
     header: {
         width: '100%',
-        height: responsiveScreenHeight(15), // 50% of Screen height
+        height: responsiveHeight(12.6), // 50% of Screen height
         backgroundColor: "#ffffff"
     },
     headerContent: {
-        marginTop: 40,
-        marginLeft: 10,
+        marginTop: responsiveScreenHeight(6),
+
+        marginLeft: responsiveScreenWidth(5),
         flexDirection: 'row',
         gap: 10,
         alignItems: 'center'
     },
-    sendto: {
-        fontSize: 19,
+    title: {
+        fontSize: responsiveScreenFontSize(2.3),
         fontWeight: '500',
-        color: '#474748'
+        color: '#474748',
+        fontFamily: 'Inter-SemiBold',
+        fontWeight: '500'
+
     }
 });

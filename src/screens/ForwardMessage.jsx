@@ -9,34 +9,42 @@ import {
     responsiveHeight,
     responsiveFontSize
 } from "react-native-responsive-dimensions";
-import Header from '../common/Header';
 import ViewHeader from '../components/ViewHeader';
-import SearchClickIconSvgComponent from '../svg/SearchClickIconSvgComponent';
-import SearchIconSvgComponent from '../svg/SearchIconSvgComponent';
-import SearchClickIconSvg from '../svg/SearchClickIconSvg';
 import SearchBar from '../components/SearchBar';
-import useList from '../utils/data';
+import userData from '../utils/userData';
 import CircleIconSvgComponent from '../svg/CircleIconSvgComponent';
+import { useFonts } from 'expo-font';
 
 
 const ForwardMessage = () => {
-    const [users, setUsers] = useState(useList);
+    const [users, setUsers] = useState(userData);
+    //.......................For using google font................//
+    const [fontsLoaded] = useFonts({
+        "WorkSans-Regular": require("../../assets/Fonts/WorkSans-Regular.ttf"),
+        "WorkSans-Black": require("../../assets/Fonts/WorkSans-Black.ttf"),
+        "WorkSans-Medium": require("../../assets/Fonts/WorkSans-Medium.ttf"),
+    });
+    if (!fontsLoaded) {
+        return <Text>Loading Font...</Text>;
+    }
     return (
         <View style={styles.container}>
             <ViewHeader title={'Forward Message'} />
             <ScrollView style={styles.viewContainer}>
                 {/* Search Field added by component */}
-                <SearchBar />
+                <View style={styles.searchBar}>
+                    <SearchBar />
+                </View>
                 <View style={styles.mainImageContainer}>
-                    <Image style={styles.manImage} source={require('../../assets/image/man.png')} />
+                    <Image style={styles.manImage} resizeMode='cover' source={require('../../assets/image/man.png')} />
                 </View>
                 <View>
-                    <Text style={styles.allContact}>Recent</Text>
+                    <Text style={styles.textHeading}>Recent</Text>
                 </View>
 
                 <View style={styles.userList}>
                     {users && users.map((user, index) => (
-                        <View key={user.id} style={{flexDirection:'row', justifyContent:'space-between'}}>
+                        <View key={user.id} style={styles.userContainer}>
                             <View style={styles.imageContainer}>
                                 <View>
                                     <Image
@@ -51,7 +59,7 @@ const ForwardMessage = () => {
                                 <View>
                                     <Text style={styles.userName}>{user.name}</Text>
 
-                                    <Text style={styles.userName}>ID: 652346752378</Text>
+                                    <Text style={styles.userId}>ID: 652346752378</Text>
                                 </View>
 
                             </View>
@@ -81,38 +89,43 @@ const styles = StyleSheet.create({
     },
     viewContainer: {
         paddingHorizontal: responsiveWidth(6),
-        backgroundColor: '#f8f8f8'
+        backgroundColor: '#f8f8f8',
+        minHeight: 900
     },
+
     mainImageContainer: {
-        justifyContent: "center"
-        ,
-        alignItems:"center"
-        
+        justifyContent: "center",
+        alignItems: "center",
+
+
     },
     manImage: {
         alignSelf: "center",
         marginTop: responsiveHeight(3),
-        width: responsiveWidth(75),
-        height: responsiveHeight(34),
-        alignSelf:'center',
-
+        width: responsiveWidth(67),
+        height: responsiveHeight(33),
+        borderWidth: 1,
+        borderRadius: responsiveWidth(2)
     },
-    allContact: {
+    textHeading: {
         color: "#0B2A46",
-        paddingTop: responsiveScreenHeight(1.8),
+        paddingTop: responsiveScreenHeight(4),
         fontFamily: "WorkSans-Medium",
         fontWeight: "500",
-        fontSize: responsiveFontSize(1.8),
+        fontSize: responsiveFontSize(1.9),
+
     },
+    userContainer: { flexDirection: 'row', justifyContent: 'space-between' },
     userList: {
-        marginTop: responsiveScreenHeight(0.5),
+        marginTop: responsiveScreenHeight(0.6),
+        marginBottom: responsiveScreenHeight(20)
     },
     imageContainer: {
         paddingLeft: responsiveScreenWidth(1),
         paddingRight: responsiveScreenWidth(1),
         flexDirection: "row",
         alignItems: "center",
-        marginVertical: responsiveScreenWidth(1),
+        marginVertical: responsiveScreenWidth(1.3),
 
     },
     user: {
@@ -126,25 +139,35 @@ const styles = StyleSheet.create({
         fontFamily: "WorkSans-Medium",
         fontWeight: "500",
     },
+    userId: {
+        color: '#6f747c',
+        marginLeft: responsiveWidth(5),
+        marginBottom: 1.5,
+        fontSize: responsiveFontSize(1.5),
+        fontFamily: "WorkSans-Regular",
+        fontWeight: "300",
+    },
     smallCircle: {
         position: "absolute",
-        left: responsiveWidth(5.5),
-        top: responsiveScreenHeight(3.5),
-        padding: 1,
+        left: responsiveWidth(4),
+        top: responsiveScreenHeight(1.5),
+        padding: 2,
     },
-    btn:{
-        marginTop:10,
-        width:60,
-        height:30,
-        backgroundColor:'#e3f0e2',
-        alignItems:'center',
-        justifyContent:'center',
-        border:1,
-        borderRadius:5
+    btn: {
+        marginTop: responsiveHeight(1.3),
+        width: responsiveWidth(16),
+        height: responsiveHeight(3.5),
+        backgroundColor: '#e3f0e2',
+        alignItems: 'center',
+        justifyContent: 'center',
+        border: 1,
+        borderRadius: 5
     },
-    btnText:{
-        color:'#27AC1F',
-        fontSize:responsiveFontSize(1.5)
+    btnText: {
+        color: '#27AC1F',
+        fontSize: responsiveFontSize(1.6),
+        fontFamily: "WorkSans-Medium",
+        fontWeight: "400",
     }
 
 });

@@ -14,25 +14,25 @@ import { StyleSheet, TextInput, View } from 'react-native';
 const SearchBar = () => {
     return (
         <View style={styles.topContainer}>
-                    {/* searc */}
-                    <View style={styles.inputField}>
-                        <TextInput
-                            style={styles.textInput}
-                            placeholder="Search..."
-                            placeholderTextColor="rgba(99, 99, 99, 1)"
-                        />
-                        <SearchClickIconSvg/>
-                        
-                    </View>
-                </View>
+            {/* searc */}
+            <View style={styles.inputField}>
+                <TextInput
+                    style={styles.textInput}
+                    placeholder="Search..."
+                    placeholderTextColor="rgba(99, 99, 99, 1)"
+                />
+                <SearchClickIconSvg />
+
+            </View>
+        </View>
     );
 };
 
 export default SearchBar;
 
 const styles = StyleSheet.create({
-    container:{
-flex:1,
+    container: {
+        flex: 1,
 
     },
 
@@ -41,7 +41,8 @@ flex:1,
         justifyContent: "space-between",
         gap: responsiveWidth(2.2),
         alignItems: "center",
-        paddingTop: responsiveHeight(3),
+        paddingTop: responsiveHeight(2.6),
+
     },
     inputField: {
         flexDirection: "row",
@@ -52,18 +53,20 @@ flex:1,
         padding: responsiveWidth(1.9),
         paddingHorizontal: responsiveWidth(3.3),
         borderWidth: 1,
-        borderColor: "rgba(0, 0, 0, 0.1)",
+        borderColor: "#EEEEEE",
         flex: 1,
 
         borderRadius: responsiveWidth(5),
-        height: responsiveScreenHeight(5.5),
+        height: responsiveScreenHeight(5.7),
     },
 
 
     textInput: {
-        fontSize: responsiveFontSize(1.8),
+        fontSize: responsiveFontSize(1.9),
         width: responsiveWidth(15),
         fontFamily: "WorkSans-Regular",
         color: "#0B2A46",
+        fontSize: responsiveFontSize(1.6),
+        fontWeight: '400'
     },
 });

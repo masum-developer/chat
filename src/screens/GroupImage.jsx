@@ -41,8 +41,7 @@ const GroupImage = () => {
               />
 
               <View style={styles.imageContainer}>
-                <FontAwesome name="group" size={150} color="black" />
-                {/* Group image svg icon is not working */}
+                <GroupIconSvgComponent />
               </View>
             </View>
           </View>
