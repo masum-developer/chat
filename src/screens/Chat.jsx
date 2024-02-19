@@ -70,7 +70,7 @@ const Chat = () => {
 
   return (
     <View style={styles.container}>
-      <Header />
+      <Header title={'Send To'} />
       <View style={styles.chat}>
         <View style={styles.searchView}>
           <View

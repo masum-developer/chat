@@ -8,25 +8,25 @@ import {
 } from "react-native-responsive-dimensions";
 import LeftArrowIconSvgComponent from '../svg/LeftArrowIconSvgComponent';
 
-const Header = () => {
+const ViewHeader = ({title}) => {
     return (
         <View style={styles.header}>
             <View style={styles.headerContent}>
-                <LeftArrowIconSvgComponent/>
-                <Text style={styles.sendto}>Send to</Text>
+            <LeftArrowIconSvgComponent/>
+                <Text style={styles.sendto}>{title}</Text>
             </View>
         </View>
     );
 };
 
-export default Header;
+export default ViewHeader;
 
 
 const styles = StyleSheet.create({
     header: {
         width: '100%',
-        height: responsiveScreenHeight(10), // 50% of Screen height
-        backgroundColor: '#fff'
+        height: responsiveScreenHeight(15), // 50% of Screen height
+        backgroundColor: "#ffffff"
     },
     headerContent: {
         marginTop: 40,

@@ -42,6 +42,11 @@ const Home = () => {
           <Text style={styles.text}>Go To Add Members</Text>
         </View>
       </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate("ForwardMessage")}>
+        <View style={styles.btn}>
+          <Text style={styles.text}>Forward Message</Text>
+        </View>
+      </TouchableOpacity>
     </View>
   );
 };
