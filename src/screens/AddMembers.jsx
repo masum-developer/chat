@@ -11,11 +11,9 @@ import {
 } from "react-native";
 
 import {
-  responsiveHeight,
   responsiveScreenHeight,
-  responsiveWidth,
-  responsiveFontSize,
   responsiveScreenWidth,
+  responsiveScreenFontSize
 } from "react-native-responsive-dimensions";
 import Modal from "react-native-modal";
 import AddMembersHeader from "../components/AddMembersHeader";
@@ -140,10 +138,10 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
     justifyContent: "center",
     alignItems: "center",
-    paddingHorizontal: responsiveWidth(3),
+    paddingHorizontal: responsiveScreenWidth(3),
   },
   modalContainer: {
-    marginTop: responsiveHeight(6),
+    marginTop: responsiveScreenHeight(6),
   },
   modalStyle: {
     borderWidth: 2,
@@ -151,20 +149,20 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     borderColor: "gray",
     backgroundColor: "#FFFFFF",
-    paddingHorizontal: responsiveWidth(4.5),
-    width: responsiveWidth(90),
-    height: responsiveHeight(69.5),
+    paddingHorizontal: responsiveScreenWidth(4.5),
+    width: responsiveScreenWidth(90),
+    height: responsiveScreenHeight(69.5),
   },
 
   btn: {
-    width: responsiveWidth(40),
-    height: responsiveHeight(5),
+    width: responsiveScreenWidth(40),
+    height: responsiveScreenHeight(5),
     backgroundColor: "#27ac1f",
-    marginBottom: responsiveHeight(3),
+    marginBottom: responsiveScreenHeight(3),
   },
   text: {
     alignSelf: "center",
-    paddingTop: responsiveHeight(1),
+    paddingTop: responsiveScreenHeight(1),
     color: "#fff",
   },
 
@@ -174,19 +172,19 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#F2F2F2",
 
-    padding: responsiveWidth(1.9),
-    paddingHorizontal: responsiveWidth(3.3),
+    padding: responsiveScreenWidth(1.9),
+    paddingHorizontal: responsiveScreenWidth(3.3),
     borderWidth: 1,
     borderColor: "rgba(0, 0, 0, 0.1)",
     flex: 1,
 
-    borderRadius: responsiveWidth(2),
+    borderRadius: responsiveScreenWidth(2),
     height: responsiveScreenHeight(5.8),
   },
 
   textInput: {
-    fontSize: responsiveFontSize(1.8),
-    width: responsiveWidth(15),
+    fontSize: responsiveScreenFontSize(1.8),
+    width: responsiveScreenWidth(15),
     fontFamily: "WorkSans-Regular",
     color: "#0B2A46",
   },
@@ -194,16 +192,16 @@ const styles = StyleSheet.create({
   topContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    gap: responsiveWidth(2.2),
+    gap: responsiveScreenWidth(2.2),
     alignItems: "center",
-    paddingTop: responsiveHeight(2.5),
+    paddingTop: responsiveScreenHeight(2.5),
   },
   allContact: {
     color: "#0B2A46",
     paddingTop: responsiveScreenHeight(1.8),
     fontFamily: "WorkSans-Medium",
     fontWeight: "500",
-    fontSize: responsiveFontSize(1.8),
+    fontSize: responsiveScreenFontSize(1.8),
   },
   userList: {
     marginTop: responsiveScreenHeight(1),
@@ -221,14 +219,14 @@ const styles = StyleSheet.create({
     height: responsiveScreenWidth(6.7),
   },
   userName: {
-    marginRight: responsiveWidth(32),
-    fontSize: responsiveFontSize(1.8),
+    marginRight: responsiveScreenWidth(32),
+    fontSize: responsiveScreenFontSize(1.8),
     fontFamily: "WorkSans-Medium",
     fontWeight: "500",
   },
   smallCircle: {
     position: "absolute",
-    left: responsiveWidth(5.5),
+    left: responsiveScreenWidth(5.5),
     top: responsiveScreenHeight(1.8),
     padding: 1,
   },

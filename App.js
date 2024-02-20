@@ -12,15 +12,14 @@ import GroupImageTake from './src/screens/GroupImageTake';
 import RemoveMessage from './src/screens/RemoveMessage';
 import AddMembers from './src/screens/AddMembers';
 import ForwardMessage from './src/screens/ForwardMessage';
+import CameraPage from './src/screens/CameraPage';
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={Home}
-        >
-        </Stack.Screen>
+        <Stack.Screen name="Home" component={Home}/>
         <Stack.Screen name="BlockMember" component={BlockMember} options={{ headerShown: false }} />
         <Stack.Screen name="RemoveMember" component={RemoveMember} options={{ headerShown: false }} />
         <Stack.Screen name="GroupImage" component={GroupImage} options={{ headerShown: false }} />
@@ -28,6 +27,7 @@ export default function App() {
         <Stack.Screen name="RemoveMessage" component={RemoveMessage} options={{ headerShown: false }} />
         <Stack.Screen name="AddMembers" component={AddMembers} options={{ headerShown: false }} />
         <Stack.Screen name="ForwardMessage" component={ForwardMessage} options={{ headerShown: false }} />
+        <Stack.Screen name="CameraPage" component={CameraPage} options={{ headerShown: false }} />
         <Stack.Screen name="Chat" component={Chat} options={{ headerShown: false }} />
 
       </Stack.Navigator>

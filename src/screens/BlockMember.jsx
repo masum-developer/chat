@@ -10,10 +10,13 @@ import {
 } from "react-native";
 
 import {
-  responsiveHeight,
+
+
+  responsiveScreenWidth,
+
   responsiveScreenHeight,
-  responsiveWidth,
-  responsiveFontSize,
+
+  responsiveScreenFontSize
 } from "react-native-responsive-dimensions";
 
 import Modal from "react-native-modal";
@@ -112,8 +115,8 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     borderColor: "gray",
     backgroundColor: "#FFFFFF",
-    width: responsiveWidth(90),
-    height: responsiveHeight(40),
+    width: responsiveScreenWidth(90),
+    height: responsiveScreenHeight(40),
   },
 
   btnContainerLeft: {
@@ -130,17 +133,17 @@ const styles = StyleSheet.create({
     borderColor: "#27ac1f",
   },
   textContainer: {
-    paddingHorizontal: responsiveWidth(7),
+    paddingHorizontal: responsiveScreenWidth(7),
   },
   btn: {
-    width: responsiveWidth(40),
-    height: responsiveHeight(5),
+    width: responsiveScreenWidth(40),
+    height: responsiveScreenHeight(5),
     backgroundColor: "#27ac1f",
-    marginBottom: responsiveHeight(3),
+    marginBottom: responsiveScreenHeight(3),
   },
   text: {
     alignSelf: "center",
-    paddingTop: responsiveHeight(1),
+    paddingTop: responsiveScreenHeight(1),
     color: "#fff",
     fontFamily: "Inter-Regular",
     fontWeight: "500",

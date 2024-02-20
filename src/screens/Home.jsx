@@ -47,6 +47,11 @@ const Home = () => {
           <Text style={styles.text}>Forward Message</Text>
         </View>
       </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate("CameraPage")}>
+        <View style={styles.btn}>
+          <Text style={styles.text}>Camera Page</Text>
+        </View>
+      </TouchableOpacity>
     </View>
   );
 };

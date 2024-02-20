@@ -1,7 +1,7 @@
 import * as React from "react"
 import Svg, { G, Circle, Defs, ClipPath, Path } from "react-native-svg"
 
-function SvgComponent(props) {
+function TakePhotoSvgComponent(props) {
   return (
     <Svg
       width={44}
@@ -24,4 +24,4 @@ function SvgComponent(props) {
   )
 }
 
-export default SvgComponent
+export default TakePhotoSvgComponent

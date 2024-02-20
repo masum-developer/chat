@@ -9,13 +9,20 @@ import {
 import { FontAwesome } from "@expo/vector-icons";
 import GroupImageHeader from "../components/GroupImageHeader";
 import ModalHeader from "../components/ModalHeader";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import GroupImageTakeHeader from "../components/GroupImageTakeHeader";
 import Svg, { Rect, Mask, Path } from "react-native-svg";
 import CameraIconSvgComponent from "../svg/CameraIconSvgComponent";
 import GalleryIconSvgComponent from "../svg/GalleryIconSvgComponent";
 
+import { Camera, CameraType } from 'expo-camera';
+import { shareAsync } from "expo-sharing";
+import * as MediaLibrary from 'expo-media-library'
+
 const GroupImageTake = () => {
+  let cameraRef = useRef();
+  const [hasCameraPermission, setHasCameraPermission] = useState();
+  const [hasMediaLibraryPermission, setHasMediaLibraryPermission] = useState();
   const navigation = useNavigation();
 
   const [modalVisible, setModalVisible] = useState(false);
@@ -23,6 +30,8 @@ const GroupImageTake = () => {
   const toggleModal = () => {
     setModalVisible(!modalVisible);
   };
+
+
 
   return (
     <View style={styles.container}>
@@ -47,7 +56,9 @@ const GroupImageTake = () => {
 
               <View style={styles.imageContainer}>
                 <View style={styles.cameraStyle}>
-                  <CameraIconSvgComponent />
+                  <TouchableOpacity onPress={() => alert('mmm')}>
+                    <CameraIconSvgComponent />
+                  </TouchableOpacity>
                   <Text style={styles.galleryText}>Use Camera</Text>
                 </View>
                 <View style={styles.cameraStyle}>
