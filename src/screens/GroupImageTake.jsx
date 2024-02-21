@@ -6,23 +6,13 @@ import {
   responsiveHeight,
   responsiveFontSize,
 } from "react-native-responsive-dimensions";
-import { FontAwesome } from "@expo/vector-icons";
-import GroupImageHeader from "../components/GroupImageHeader";
-import ModalHeader from "../components/ModalHeader";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import GroupImageTakeHeader from "../components/GroupImageTakeHeader";
-import Svg, { Rect, Mask, Path } from "react-native-svg";
-import CameraIconSvgComponent from "../svg/CameraIconSvgComponent";
-import GalleryIconSvgComponent from "../svg/GalleryIconSvgComponent";
 
-import { Camera, CameraType } from 'expo-camera';
-import { shareAsync } from "expo-sharing";
-import * as MediaLibrary from 'expo-media-library'
+import GalleryIconSvgComponent from "../svg/GalleryIconSvgComponent";
+import CameraIconSvgComponent from "../svg/CameraIconSvgComponent";
 
 const GroupImageTake = () => {
-  let cameraRef = useRef();
-  const [hasCameraPermission, setHasCameraPermission] = useState();
-  const [hasMediaLibraryPermission, setHasMediaLibraryPermission] = useState();
   const navigation = useNavigation();
 
   const [modalVisible, setModalVisible] = useState(false);
@@ -30,8 +20,6 @@ const GroupImageTake = () => {
   const toggleModal = () => {
     setModalVisible(!modalVisible);
   };
-
-
 
   return (
     <View style={styles.container}>
@@ -56,14 +44,20 @@ const GroupImageTake = () => {
 
               <View style={styles.imageContainer}>
                 <View style={styles.cameraStyle}>
-                  <TouchableOpacity onPress={() => alert('mmm')}>
+                  <TouchableOpacity
+                    onPress={() => navigation.navigate("CameraPage")}
+                  >
                     <CameraIconSvgComponent />
                   </TouchableOpacity>
                   <Text style={styles.galleryText}>Use Camera</Text>
                 </View>
                 <View style={styles.cameraStyle}>
-                  <GalleryIconSvgComponent />
-                  <Text style={styles.galleryText}>Use Gallery</Text>
+                  <TouchableOpacity
+                    onPress={() => navigation.navigate("PhotoGallery")}
+                  >
+                    <GalleryIconSvgComponent />
+                    <Text style={styles.galleryText}>Use Gallery</Text>
+                  </TouchableOpacity>
                 </View>
               </View>
             </View>

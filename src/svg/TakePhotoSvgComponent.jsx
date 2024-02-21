@@ -1,5 +1,5 @@
-import * as React from "react"
-import Svg, { G, Circle, Defs, ClipPath, Path } from "react-native-svg"
+import * as React from "react";
+import Svg, { G, Circle, Defs, ClipPath, Path } from "react-native-svg";
 
 function TakePhotoSvgComponent(props) {
   return (
@@ -21,7 +21,7 @@ function TakePhotoSvgComponent(props) {
         </ClipPath>
       </Defs>
     </Svg>
-  )
+  );
 }
 
-export default TakePhotoSvgComponent
+export default TakePhotoSvgComponent;
