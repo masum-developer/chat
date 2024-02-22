@@ -10,11 +10,12 @@ import {
 import LeftArrowIconSvgComponent from "../svg/LeftArrowIconSvgComponent";
 import { useNavigation } from "@react-navigation/native";
 import { useFonts } from "expo-font";
+import LeftArrowIconLightSvgComponent from "../svg/LeftArrowIconLightSvgComponent";
 
 const ViewHeader = ({ title }) => {
   const navigation = useNavigation();
   const [fontsLoaded] = useFonts({
-    "Inter-SemiBold": require("../../assets/Fonts/Inter-SemiBold.ttf"),
+    "Inter-Medium": require("../../assets/Fonts/Inter-Medium.ttf"),
   });
   if (!fontsLoaded) {
     return <Text>Loading Font...</Text>;
@@ -23,7 +24,7 @@ const ViewHeader = ({ title }) => {
     <View style={styles.header}>
       <View style={styles.headerContent}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
-          <LeftArrowIconSvgComponent />
+          <LeftArrowIconLightSvgComponent />
         </TouchableOpacity>
         <Text style={styles.title}>{title}</Text>
       </View>
@@ -50,8 +51,8 @@ const styles = StyleSheet.create({
   title: {
     fontSize: responsiveScreenFontSize(2.3),
     fontWeight: "500",
-    color: "#474748",
-    fontFamily: "Inter-SemiBold",
+    color: "#546A7E",
+    fontFamily: "Inter-Medium",
     fontWeight: "500",
   },
 });

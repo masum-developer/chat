@@ -8,7 +8,7 @@ import {
   responsiveScreenFontSize,
 } from "react-native-responsive-dimensions";
 
-const Button = ({ title }) => {
+const HeaderSmall = ({ title }) => {
   const [fontsLoaded] = useFonts({
     "Inter-Regular": require("../../assets/Fonts/Inter-Regular.ttf"),
     "Inter-Bold": require("../../assets/Fonts/Inter-Bold.ttf"),
@@ -18,30 +18,27 @@ const Button = ({ title }) => {
     return <Text>Loading Font...</Text>;
   }
   return (
-    <View style={styles.btn}>
-      <Text style={styles.btnText}>{title}</Text>
+    <View>
+      <View style={styles.textContainer}>
+        <Text style={styles.headingSmall}>{title}</Text>
+      </View>
     </View>
   );
 };
 
-export default Button;
+export default HeaderSmall;
 
 const styles = StyleSheet.create({
-  btn: {
-    marginTop: responsiveScreenHeight(5),
-    marginBottom: responsiveScreenHeight(4),
-    borderRadius: responsiveScreenWidth(2),
-    width: "90%",
-    height: responsiveScreenHeight(6),
-    backgroundColor: "#27AC1F",
+  textContainer: {
     alignSelf: "center",
-    alignItems: "center",
-    justifyContent: "center",
+    width: "90%",
   },
-  btnText: {
-    color: "#FFFFFF",
-    fontSize: responsiveScreenFontSize(2.2),
-    fontFamily: "Inter-Medium",
-    fontWeight: "500",
+
+  headingSmall: {
+    color: "#546A7E",
+    fontSize: responsiveScreenFontSize(2),
+    paddingBottom: responsiveScreenHeight(2),
+    fontFamily: "Inter-Regular",
+    fontWeight: "400",
   },
 });

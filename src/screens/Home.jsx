@@ -14,32 +14,32 @@ const Home = () => {
     <View style={styles.container}>
       <TouchableOpacity onPress={() => navigation.navigate("BlockMember")}>
         <View style={styles.btn}>
-          <Text style={styles.text}>Go To Block Member</Text>
+          <Text style={styles.text}>Block Member</Text>
         </View>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate("RemoveMember")}>
         <View style={styles.btn}>
-          <Text style={styles.text}>Go To Remove Member</Text>
+          <Text style={styles.text}>Remove Member</Text>
         </View>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate("GroupImage")}>
         <View style={styles.btn}>
-          <Text style={styles.text}>Go To Group Chat</Text>
+          <Text style={styles.text}>Group Image</Text>
         </View>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate("CrowdImage")}>
         <View style={styles.btn}>
-          <Text style={styles.text}>Go To Crowd Image</Text>
+          <Text style={styles.text}>Crowd Image</Text>
         </View>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate("RemoveMessage")}>
         <View style={styles.btn}>
-          <Text style={styles.text}>Go To Remove Message</Text>
+          <Text style={styles.text}>Remove Message</Text>
         </View>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate("AddMembers")}>
         <View style={styles.btn}>
-          <Text style={styles.text}>Go To Add Members</Text>
+          <Text style={styles.text}>Add Members</Text>
         </View>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate("ForwardMessage")}>

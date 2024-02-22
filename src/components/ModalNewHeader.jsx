@@ -6,9 +6,17 @@ import {
   responsiveScreenFontSize,
 } from "react-native-responsive-dimensions";
 import CloseIconSvgComponent from "../svg/CloseIconSvgComponent";
-import LeftArrowIconLightSvgComponent from "../screens/LeftArrowIconLightSvgComponent";
+
+import { useFonts } from "expo-font";
+import LeftArrowIconLightSvgComponent from "../svg/LeftArrowIconLightSvgComponent";
 
 const ModalNewHeader = ({ text, toggleModal }) => {
+  const [fontsLoaded] = useFonts({
+    "Inter-Regular": require("../../assets/Fonts/Inter-Regular.ttf"),
+  });
+  if (!fontsLoaded) {
+    return <Text>Loading Font...</Text>;
+  }
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
@@ -52,9 +60,10 @@ const styles = StyleSheet.create({
     height: responsiveScreenHeight(3),
   },
   headerText: {
-    fontSize: responsiveScreenFontSize(2),
+    fontSize: responsiveScreenFontSize(2.2),
     color: "#546A7E",
     marginLeft: responsiveScreenWidth(2),
+    fontFamily: "Inter-Regular",
     fontWeight: "500",
   },
   line: {

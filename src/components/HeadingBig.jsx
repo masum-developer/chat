@@ -1,14 +1,13 @@
 import { useFonts } from "expo-font";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-
 import {
-  responsiveScreenHeight,
   responsiveScreenWidth,
+  responsiveScreenHeight,
   responsiveScreenFontSize,
 } from "react-native-responsive-dimensions";
 
-const Button = ({ title }) => {
+const HeadingBig = ({ title }) => {
   const [fontsLoaded] = useFonts({
     "Inter-Regular": require("../../assets/Fonts/Inter-Regular.ttf"),
     "Inter-Bold": require("../../assets/Fonts/Inter-Bold.ttf"),
@@ -18,30 +17,23 @@ const Button = ({ title }) => {
     return <Text>Loading Font...</Text>;
   }
   return (
-    <View style={styles.btn}>
-      <Text style={styles.btnText}>{title}</Text>
+    <View style={styles.textContainer}>
+      <Text style={styles.heading}>{title}</Text>
     </View>
   );
 };
 
-export default Button;
+export default HeadingBig;
 
 const styles = StyleSheet.create({
-  btn: {
-    marginTop: responsiveScreenHeight(5),
-    marginBottom: responsiveScreenHeight(4),
-    borderRadius: responsiveScreenWidth(2),
+  textContainer: {
     width: "90%",
-    height: responsiveScreenHeight(6),
-    backgroundColor: "#27AC1F",
     alignSelf: "center",
-    alignItems: "center",
-    justifyContent: "center",
   },
-  btnText: {
-    color: "#FFFFFF",
-    fontSize: responsiveScreenFontSize(2.2),
+  heading: {
+    color: "#0B2A46",
+    fontSize: responsiveScreenFontSize(2.6),
+    paddingBottom: responsiveScreenHeight(1),
     fontFamily: "Inter-Medium",
-    fontWeight: "500",
   },
 });

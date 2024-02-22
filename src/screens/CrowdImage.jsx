@@ -2,19 +2,14 @@ import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import Modal from "react-native-modal";
 import { useNavigation } from "@react-navigation/native";
 import {
-  responsiveWidth,
-  responsiveHeight,
-  responsiveFontSize,
+  responsiveScreenWidth,
+  responsiveScreenHeight,
   responsiveScreenFontSize,
 } from "react-native-responsive-dimensions";
 import { useState } from "react";
-import GroupImageTakeHeader from "../components/GroupImageTakeHeader";
-
-import GalleryIconSvgComponent from "../svg/GalleryIconSvgComponent";
-import CameraIconSvgComponent from "../svg/CameraIconSvgComponent";
-
 import ModalNewHeader from "../components/ModalNewHeader";
 import { useFonts } from "expo-font";
+import CrowdImageModalBody from "../components/CrowdImageModalBody";
 
 const CrowdImage = () => {
   const navigation = useNavigation();
@@ -24,6 +19,8 @@ const CrowdImage = () => {
   const toggleModal = () => {
     setModalVisible(!modalVisible);
   };
+
+  /********Using Font*******/
   const [fontsLoaded] = useFonts({
     "Inter-Regular": require("../../assets/Fonts/Inter-Regular.ttf"),
     "Inter-Medium": require("../../assets/Fonts/Inter-Medium.ttf"),
@@ -36,7 +33,7 @@ const CrowdImage = () => {
       <View>
         <TouchableOpacity onPress={toggleModal}>
           <View style={styles.btn}>
-            <Text style={styles.text}>Open Crowd Image Modal</Text>
+            <Text style={styles.text}>Open Modal</Text>
           </View>
         </TouchableOpacity>
         <Modal
@@ -51,25 +48,7 @@ const CrowdImage = () => {
               <View style={styles.textContainer}>
                 <Text style={styles.heading}>Crowd Image</Text>
               </View>
-
-              <View style={styles.imageContainer}>
-                <View style={styles.cameraStyle}>
-                  <TouchableOpacity
-                    onPress={() => navigation.navigate("CameraPage")}
-                  >
-                    <CameraIconSvgComponent />
-                  </TouchableOpacity>
-                  <Text style={styles.galleryText}>Use Camera</Text>
-                </View>
-                <View style={styles.cameraStyle}>
-                  <TouchableOpacity
-                    onPress={() => navigation.navigate("PhotoGallery")}
-                  >
-                    <GalleryIconSvgComponent />
-                  </TouchableOpacity>
-                  <Text style={styles.galleryText}>Use Gallery</Text>
-                </View>
-              </View>
+              <CrowdImageModalBody />
             </View>
           </View>
         </Modal>
@@ -87,15 +66,15 @@ const CrowdImage = () => {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: responsiveHeight(20),
+    marginTop: responsiveScreenHeight(20),
     justifyContent: "center",
     alignItems: "center",
   },
   textContainer: {
     alignSelf: "center",
     width: "90%",
-    marginBottom: responsiveHeight(3),
-    marginLeft: responsiveWidth(2),
+    marginBottom: responsiveScreenHeight(3),
+    marginLeft: responsiveScreenWidth(2),
   },
   heading: {
     color: "#0B2A46",
@@ -104,14 +83,14 @@ const styles = StyleSheet.create({
     fontWeight: "500",
   },
   btn: {
-    width: responsiveWidth(40),
-    height: responsiveHeight(5),
+    width: responsiveScreenWidth(40),
+    height: responsiveScreenHeight(5),
     backgroundColor: "#27ac1f",
-    marginBottom: responsiveHeight(3),
+    marginBottom: responsiveScreenHeight(3),
   },
   text: {
     alignSelf: "center",
-    paddingTop: responsiveHeight(1),
+    paddingTop: responsiveScreenHeight(1),
     color: "#fff",
   },
   modalStyle: {
@@ -119,28 +98,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     borderColor: "gray",
     backgroundColor: "#FFFFFF",
-
-    height: responsiveHeight(38),
-  },
-  cameraStyle: {
-    width: responsiveWidth(38),
-    height: responsiveHeight(16),
-    backgroundColor: "#F8F8F8",
-    borderRadius: 10,
-    alignItems: "center",
-    borderColor: "rgba(0, 0, 0, 0.1)",
-    justifyContent: "center",
-    borderWidth: 1,
-  },
-  imageContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    paddingHorizontal: responsiveWidth(5),
-  },
-  galleryText: {
-    marginTop: responsiveHeight(3),
-    fontSize: responsiveFontSize(2),
-    color: "#546A7E",
+    height: responsiveScreenHeight(38),
   },
 });
 

@@ -18,13 +18,17 @@ import {
 } from "react-native-responsive-dimensions";
 
 import ViewHeader from "../components/ViewHeader";
-import PhotoGalleryText from "../components/PhotoGalleryText";
+
 import Button from "../components/Button";
 import SelectCircleSvgComponent from "../svg/SelectCircleSvgComponent";
+import HeadingBig from "../components/HeadingBig";
+import HeaderSmall from "../components/HeaderSmall";
+import { useNavigation } from "@react-navigation/native";
 
 const PhotoGallery = () => {
   const [media, setMedia] = useState([]);
   const [selectedImage, setSelectedImage] = useState(null);
+  const navigation = useNavigation();
   //**************** */ for loading image***************************//
   useEffect(() => {
     (async () => {
@@ -46,7 +50,10 @@ const PhotoGallery = () => {
   return (
     <View style={styles.container}>
       <ViewHeader title={"Back"} />
-      <PhotoGalleryText />
+      <View style={styles.headerTop}>
+        <HeadingBig title={"Photo Gallery"} />
+      </View>
+      <HeaderSmall title={"Select one photo"} />
       <View style={styles.mediaContainer}>
         <FlatList
           data={media}
@@ -67,7 +74,9 @@ const PhotoGallery = () => {
           )}
         />
       </View>
-      <Button />
+      <TouchableOpacity onPress={() => navigation.navigate("CrowdImage")}>
+        <Button title={"Save"} />
+      </TouchableOpacity>
     </View>
   );
 };
@@ -78,25 +87,25 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-
+  headerTop: { paddingTop: responsiveScreenHeight(2) },
   mediaContainer: {
     flex: 1,
     alignSelf: "center",
-    width: "90%",
+    width: "91%",
   },
   imageContainer: {
     position: "relative",
   },
   image: {
-    width: 120,
-    height: 140,
-    margin: 3,
-    borderRadius: 5,
+    width: responsiveScreenWidth(28),
+    height: responsiveScreenHeight(15),
+    margin: responsiveScreenWidth(1),
+    borderRadius: responsiveScreenWidth(2),
   },
   selectCircle: {
     position: "absolute",
-    bottom: 10,
-    right: 30,
+    bottom: responsiveScreenHeight(1),
+    right: responsiveScreenWidth(2),
     zIndex: 5,
   },
 });

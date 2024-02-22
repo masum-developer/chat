@@ -1,15 +1,20 @@
-import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  Image,
+  SafeAreaView,
+} from "react-native";
 
 import React, { useEffect, useRef, useState } from "react";
 
 import { Camera, CameraType } from "expo-camera";
-import { shareAsync } from "expo-sharing";
 import * as MediaLibrary from "expo-media-library";
 import TakePhotoSvgComponent from "../svg/TakePhotoSvgComponent";
 import {
   responsiveScreenHeight,
   responsiveScreenWidth,
-  responsiveScreenFontSize,
 } from "react-native-responsive-dimensions";
 
 import ViewHeader from "../components/ViewHeader";
@@ -19,6 +24,7 @@ import RotateIconSvgComponent from "../svg/RotateIconSvgComponent";
 import SpeedIconSvgComponent from "../svg/SpeedIconSvgComponent";
 import FlashOffIconSvgComponent from "../svg/FlashOffIconSvgComponent";
 import { useNavigation } from "@react-navigation/native";
+import HeadingBig from "../components/HeadingBig";
 
 const CameraPage = () => {
   const navigation = useNavigation();
@@ -34,7 +40,7 @@ const CameraPage = () => {
       setHasCameraPermission(cameraStatus.status === "granted");
     })();
   }, []);
-
+  /*******************************IFor taking and save image********************************************/
   const takePicture = async () => {
     if (cameraRef) {
       try {
@@ -50,36 +56,31 @@ const CameraPage = () => {
   if (hasCameraPermission === false) {
     return <Text>No Access to camera</Text>;
   }
+
   return (
     <View style={styles.container}>
+      {/* Added Header */}
       <ViewHeader title={"Back"} />
-      <View style={styles.cameraContainer}>
-        <View style={styles.textContainer}>
-          <Text style={styles.heading}>Camera</Text>
+
+      <SafeAreaView style={styles.cameraContainer}>
+        <HeadingBig title={"Camera"} />
+        {/* Camera Loaded */}
+        <View style={styles.cameraWrapper}>
+          <Camera
+            style={styles.camera}
+            type={type}
+            flashMode={flash}
+            ref={cameraRef}
+          >
+            <Text></Text>
+          </Camera>
         </View>
 
-        <Camera
-          style={styles.camera}
-          type={type}
-          flashMode={flash}
-          ref={cameraRef}
-        >
-          <Text></Text>
-        </Camera>
-
+        {/* Camera Button */}
         <View style={styles.btnContainer}>
-          <View
-            style={{
-              flex: 1,
-              flexDirection: "row",
-              justifyContent: "space-between",
-              alignItems: "center",
-              paddingHorizontal: 5,
-            }}
-          >
-            <View style={{ flexDirection: "row", gap: 12 }}>
+          <View style={styles.btnWholeArea}>
+            <View style={styles.btnArea}>
               <TouchableOpacity
-                style={styles.btn}
                 onPress={() => {
                   setFlash(
                     flash === Camera.Constants.FlashMode.off
@@ -96,22 +97,23 @@ const CameraPage = () => {
                   )}
                 </View>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.btn} onPress={takePicture}>
+              <TouchableOpacity
+                onPress={() => alert("Video will implement later")}
+              >
                 <View>
                   <VideoIconSvgComponent />
                 </View>
               </TouchableOpacity>
             </View>
             <View>
-              <TouchableOpacity style={styles.btn} onPress={takePicture}>
+              <TouchableOpacity onPress={takePicture}>
                 <View>
                   <TakePhotoSvgComponent />
                 </View>
               </TouchableOpacity>
             </View>
-            <View style={{ flexDirection: "row", gap: 12 }}>
+            <View style={styles.btnArea}>
               <TouchableOpacity
-                style={styles.btn}
                 onPress={() => {
                   setType(
                     type === CameraType.back
@@ -124,7 +126,9 @@ const CameraPage = () => {
                   <RotateIconSvgComponent />
                 </View>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.btn} onPress={takePicture}>
+              <TouchableOpacity
+                onPress={() => alert("Video 1x will implement later")}
+              >
                 <View>
                   <SpeedIconSvgComponent />
                 </View>
@@ -132,7 +136,7 @@ const CameraPage = () => {
             </View>
           </View>
         </View>
-      </View>
+      </SafeAreaView>
     </View>
   );
 };
@@ -143,36 +147,40 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  textContainer: {
-    alignSelf: "center",
-    width: "90%",
-  },
   cameraContainer: {
     flex: 1,
     backgroundColor: "#f8f8f8",
-    paddingTop: 20,
-    paddingBottom: 30,
+    paddingTop: responsiveScreenHeight(2),
+    paddingBottom: responsiveScreenHeight(3),
   },
-  heading: {
-    color: "#0B2A46",
-    fontSize: responsiveScreenFontSize(2.5),
+  cameraWrapper: {
+    alignSelf: "center",
+    width: "90%",
+    height: responsiveScreenHeight(75),
+    borderRadius: responsiveScreenWidth(2),
+    overflow: "hidden", // Add this to hide the overflow
   },
   camera: {
     flex: 1,
-    alignSelf: "center",
-    borderRadius: 20,
-    width: "90%",
-    // position: "relative",
+    width: "100%",
   },
   btnContainer: {
     position: "absolute",
-    bottom: responsiveScreenHeight(5),
+    bottom: responsiveScreenHeight(3),
     backgroundColor: "rgba(204, 204, 204, 0.2)",
-    width: "80%",
-    height: responsiveScreenHeight(10),
-    borderRadius: 10,
+    width: "82%",
+    height: responsiveScreenHeight(8),
+    borderRadius: responsiveScreenWidth(2),
     flexDirection: "row",
     alignSelf: "center",
+    paddingHorizontal: responsiveScreenWidth(1),
   },
-  btn: {},
+  btnWholeArea: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingHorizontal: responsiveScreenWidth(1),
+  },
+  btnArea: { flexDirection: "row", gap: responsiveScreenWidth(4) },
 });
