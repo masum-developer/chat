@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -8,12 +8,13 @@ import Chat from './src/screens/Chat';
 import BlockMember from './src/screens/BlockMember';
 import RemoveMember from './src/screens/RemoveMember';
 import GroupImage from './src/screens/GroupImage';
-import GroupImageTake from './src/screens/GroupImageTake';
+
 import RemoveMessage from './src/screens/RemoveMessage';
 import AddMembers from './src/screens/AddMembers';
 import ForwardMessage from './src/screens/ForwardMessage';
 import CameraPage from './src/screens/CameraPage';
 import PhotoGallery from './src/screens/PhotoGallery';
+import CrowdImage from './src/screens/CrowdImage';
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -24,7 +25,7 @@ export default function App() {
         <Stack.Screen name="BlockMember" component={BlockMember} options={{ headerShown: false }} />
         <Stack.Screen name="RemoveMember" component={RemoveMember} options={{ headerShown: false }} />
         <Stack.Screen name="GroupImage" component={GroupImage} options={{ headerShown: false }} />
-        <Stack.Screen name="GroupImageTake" component={GroupImageTake} options={{ headerShown: false }} />
+        <Stack.Screen name="CrowdImage" component={CrowdImage} options={{ headerShown: false }} />
         <Stack.Screen name="RemoveMessage" component={RemoveMessage} options={{ headerShown: false }} />
         <Stack.Screen name="AddMembers" component={AddMembers} options={{ headerShown: false }} />
         <Stack.Screen name="ForwardMessage" component={ForwardMessage} options={{ headerShown: false }} />

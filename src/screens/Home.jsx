@@ -27,9 +27,9 @@ const Home = () => {
           <Text style={styles.text}>Go To Group Chat</Text>
         </View>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate("GroupImageTake")}>
+      <TouchableOpacity onPress={() => navigation.navigate("CrowdImage")}>
         <View style={styles.btn}>
-          <Text style={styles.text}>Go To Group Chat Image</Text>
+          <Text style={styles.text}>Go To Crowd Image</Text>
         </View>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate("RemoveMessage")}>
@@ -45,11 +45,6 @@ const Home = () => {
       <TouchableOpacity onPress={() => navigation.navigate("ForwardMessage")}>
         <View style={styles.btn}>
           <Text style={styles.text}>Forward Message</Text>
-        </View>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate("CameraPage")}>
-        <View style={styles.btn}>
-          <Text style={styles.text}>Camera Page</Text>
         </View>
       </TouchableOpacity>
     </View>

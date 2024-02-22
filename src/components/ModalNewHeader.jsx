@@ -5,23 +5,16 @@ import {
   responsiveScreenWidth,
   responsiveScreenFontSize,
 } from "react-native-responsive-dimensions";
-import LeftArrowIconSvgComponent from "../svg/LeftArrowIconSvgComponent";
 import CloseIconSvgComponent from "../svg/CloseIconSvgComponent";
+import LeftArrowIconLightSvgComponent from "../screens/LeftArrowIconLightSvgComponent";
 
-const ModalHeader = ({ text, toggleModal }) => {
+const ModalNewHeader = ({ text, toggleModal }) => {
   return (
     <View style={styles.container}>
-      <View
-        style={{
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignItems: "center",
-          paddingRight: 10,
-        }}
-      >
+      <View style={styles.headerContainer}>
         <View style={styles.headerTitle}>
           <TouchableOpacity onPress={toggleModal}>
-            <LeftArrowIconSvgComponent />
+            <LeftArrowIconLightSvgComponent />
           </TouchableOpacity>
           <Text style={styles.headerText}>{text}</Text>
         </View>
@@ -38,12 +31,20 @@ const ModalHeader = ({ text, toggleModal }) => {
 };
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    marginBottom: responsiveScreenHeight(2),
+  },
+  headerContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingRight: 10,
+  },
   headerTitle: {
     flexDirection: "row",
     alignItems: "center",
     width: responsiveScreenWidth(40),
-    height: responsiveScreenHeight(9),
+    height: responsiveScreenHeight(8),
     marginLeft: responsiveScreenWidth(6),
   },
   headerImage: {
@@ -51,8 +52,8 @@ const styles = StyleSheet.create({
     height: responsiveScreenHeight(3),
   },
   headerText: {
-    fontSize: responsiveScreenFontSize(3),
-    color: "#474748",
+    fontSize: responsiveScreenFontSize(2),
+    color: "#546A7E",
     marginLeft: responsiveScreenWidth(2),
     fontWeight: "500",
   },
@@ -64,4 +65,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ModalHeader;
+export default ModalNewHeader;

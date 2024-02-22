@@ -18,11 +18,14 @@ import {
 } from "react-native-responsive-dimensions";
 
 import ViewHeader from "../components/ViewHeader";
+import PhotoGalleryText from "../components/PhotoGalleryText";
+import Button from "../components/Button";
+import SelectCircleSvgComponent from "../svg/SelectCircleSvgComponent";
 
 const PhotoGallery = () => {
   const [media, setMedia] = useState([]);
-  const [selectedImages, setSelectedImages] = useState([]);
-
+  const [selectedImage, setSelectedImage] = useState(null);
+  //**************** */ for loading image***************************//
   useEffect(() => {
     (async () => {
       const { status } = await MediaLibrary.requestPermissionsAsync();
@@ -35,41 +38,36 @@ const PhotoGallery = () => {
       }
     })();
   }, []);
-
-  const toggleImageSelection = (image) => {
-    const isSelected = selectedImages.includes(image);
-    if (isSelected) {
-      setSelectedImages(
-        selectedImages.filter((selected) => selected !== image)
-      );
-    } else {
-      setSelectedImages([...selectedImages, image]);
-    }
+  //**************** */ for select image***************************//
+  const selectImage = (item) => {
+    setSelectedImage(item);
   };
+
   return (
     <View style={styles.container}>
       <ViewHeader title={"Back"} />
+      <PhotoGalleryText />
       <View style={styles.mediaContainer}>
         <FlatList
           data={media}
-          numColumns={4}
+          numColumns={3}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
             <TouchableOpacity
               style={styles.imageContainer}
-              onPress={() => toggleImageSelection(item)}
+              onPress={() => selectImage(item)}
             >
               <Image source={{ uri: item.uri }} style={styles.image} />
-              {selectedImages.includes(item) && (
-                <View style={styles.selectedOverlay} />
+              {selectedImage && selectedImage.id === item.id && (
+                <View style={styles.selectCircle}>
+                  <SelectCircleSvgComponent />
+                </View>
               )}
             </TouchableOpacity>
           )}
         />
       </View>
-      <View style={{ marginTop: 40 }}>
-        <Text>Save</Text>
-      </View>
+      <Button />
     </View>
   );
 };
@@ -80,14 +78,25 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+
   mediaContainer: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    alignSelf: "center",
+    width: "90%",
+  },
+  imageContainer: {
+    position: "relative",
   },
   image: {
-    width: 100,
-    height: 100,
-    margin: 5,
+    width: 120,
+    height: 140,
+    margin: 3,
+    borderRadius: 5,
+  },
+  selectCircle: {
+    position: "absolute",
+    bottom: 10,
+    right: 30,
+    zIndex: 5,
   },
 });
