@@ -26,7 +26,7 @@ const InterviewHeader = ({ text, toggleModal }) => {
             <Text style={styles.headerText}>{text}</Text>
           </View>
           <View>
-            <TouchableOpacity onPress={toggleModal}>
+            <TouchableOpacity onPress={() => {}}>
               <EditGreenIconSvgComponent />
             </TouchableOpacity>
           </View>
@@ -54,6 +54,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
 
     width: responsiveScreenWidth(50),
+    gap: responsiveScreenWidth(1),
   },
   headerTitle: {
     flexDirection: "row",

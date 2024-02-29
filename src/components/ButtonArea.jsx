@@ -33,7 +33,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingVertical: responsiveScreenHeight(3),
+    paddingTop: responsiveScreenHeight(1),
+    paddingBottom: responsiveScreenHeight(3),
   },
   btn: {
     width: responsiveScreenWidth(38),

@@ -45,7 +45,7 @@ const SectionInvite = () => {
           </TouchableOpacity>
         </View>
         <View style={styles.headerTitle}>
-          <Text style={styles.headerText}> 3 Invited Guest</Text>
+          <Text style={styles.headerText}> {users.length} Invited Guest</Text>
         </View>
       </View>
       <View style={styles.userSection}>
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     marginLeft: responsiveScreenWidth(1),
   },
   userSection: {
-    marginTop: responsiveScreenHeight(2),
+    marginTop: responsiveScreenHeight(3),
   },
   userContainer: {
     flexDirection: "row",
