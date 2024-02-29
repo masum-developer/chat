@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     height: responsiveScreenHeight(3),
   },
   headerText: {
-    fontSize: responsiveScreenFontSize(2.0),
+    fontSize: responsiveScreenFontSize(2.3),
     color: "#000000",
 
     fontFamily: "WorkSans-Medium",
