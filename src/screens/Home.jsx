@@ -47,6 +47,11 @@ const Home = () => {
           <Text style={styles.text}>Forward Message</Text>
         </View>
       </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate("Interview")}>
+        <View style={styles.btn}>
+          <Text style={styles.text}>Interview</Text>
+        </View>
+      </TouchableOpacity>
     </View>
   );
 };

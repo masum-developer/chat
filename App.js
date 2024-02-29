@@ -15,6 +15,7 @@ import ForwardMessage from './src/screens/ForwardMessage';
 import CameraPage from './src/screens/CameraPage';
 import PhotoGallery from './src/screens/PhotoGallery';
 import CrowdImage from './src/screens/CrowdImage';
+import Interview from './src/screens/Interview';
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -31,6 +32,7 @@ export default function App() {
         <Stack.Screen name="ForwardMessage" component={ForwardMessage} options={{ headerShown: false }} />
         <Stack.Screen name="CameraPage" component={CameraPage} options={{ headerShown: false }} />
         <Stack.Screen name="PhotoGallery" component={PhotoGallery} options={{ headerShown: false }} />
+        <Stack.Screen name="Interview" component={Interview} options={{ headerShown: false }} />
         <Stack.Screen name="Chat" component={Chat} options={{ headerShown: false }} />
 
       </Stack.Navigator>
