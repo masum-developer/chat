@@ -52,6 +52,11 @@ const Home = () => {
           <Text style={styles.text}>Interview</Text>
         </View>
       </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate("MyCalendar")}>
+        <View style={styles.btn}>
+          <Text style={styles.text}>Calendar</Text>
+        </View>
+      </TouchableOpacity>
     </View>
   );
 };

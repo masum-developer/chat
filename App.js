@@ -16,6 +16,7 @@ import CameraPage from './src/screens/CameraPage';
 import PhotoGallery from './src/screens/PhotoGallery';
 import CrowdImage from './src/screens/CrowdImage';
 import Interview from './src/screens/Interview';
+import MyCalendar from './src/screens/MyCalendar';
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -34,6 +35,7 @@ export default function App() {
         <Stack.Screen name="PhotoGallery" component={PhotoGallery} options={{ headerShown: false }} />
         <Stack.Screen name="Interview" component={Interview} options={{ headerShown: false }} />
         <Stack.Screen name="Chat" component={Chat} options={{ headerShown: false }} />
+        <Stack.Screen name="MyCalendar" component={MyCalendar} options={{ headerShown: false }} />
 
       </Stack.Navigator>
     </NavigationContainer>
