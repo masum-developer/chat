@@ -10,20 +10,15 @@ import CloseIconSvgComponent from "../svg/CloseIconSvgComponent";
 
 const ModalHeader = ({ text, toggleModal }) => {
   return (
-    <View style={styles.container}>
+    <View >
       <View
-        style={{
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignItems: "center",
-          paddingRight: 10,
-        }}
+        style={ModalHeaderStyles.container}
       >
-        <View style={styles.headerTitle}>
+        <View style={ModalHeaderStyles.headerTitle}>
           <TouchableOpacity onPress={toggleModal}>
             <LeftArrowIconSvgComponent />
           </TouchableOpacity>
-          <Text style={styles.headerText}>{text}</Text>
+          <Text style={ModalHeaderStyles.headerText}>{text}</Text>
         </View>
         <View>
           <TouchableOpacity onPress={toggleModal}>
@@ -32,13 +27,18 @@ const ModalHeader = ({ text, toggleModal }) => {
         </View>
       </View>
 
-      <View style={styles.line} />
+      <View style={ModalHeaderStyles.line} />
     </View>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {},
+const ModalHeaderStyles = StyleSheet.create({
+  container: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingRight: 10,
+  },
   headerTitle: {
     flexDirection: "row",
     alignItems: "center",

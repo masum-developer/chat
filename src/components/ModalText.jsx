@@ -16,14 +16,14 @@ const ModalText = ({ text }) => {
   }
   return (
     <View>
-      <Text style={styles.modalText}>{text}</Text>
+      <Text style={ModalTextStyles.modalText}>{text}</Text>
     </View>
   );
 };
 
 export default ModalText;
 
-const styles = StyleSheet.create({
+const ModalTextStyles = StyleSheet.create({
   modalText: {
     marginBottom: responsiveHeight(4),
     marginTop: responsiveHeight(5),
