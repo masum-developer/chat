@@ -3,12 +3,11 @@ import {
   ScrollView,
   StyleSheet,
   Text,
-  TextInput,
   TouchableOpacity,
   View,
 } from "react-native";
 // import Calendar  from 'react-native-calendars/src/calendar';
-import { Calendar, LocaleConfig } from "react-native-calendars";
+import { Calendar} from "react-native-calendars";
 import {
   responsiveScreenHeight,
   responsiveScreenWidth,
@@ -51,7 +50,7 @@ const calenderHeadingStyles = StyleSheet.create({
   header: {
     width: "100%",
     height: responsiveScreenHeight(12.6), // 50% of Screen height
-    backgroundColor: "#ffffff",
+    
   },
   headerContent: {
     marginTop: responsiveScreenHeight(6),
@@ -85,157 +84,7 @@ const calenderHeadingStyles = StyleSheet.create({
   },
 });
 
-//...........................................
-
-// import RightArrowLong from "../../../assets/svgs/RightArrowLong";
-// import Fonts from "../../../assets/Fonts/Fonts";
-
-// --------------------------
-// ----------- Calendar Item Components -----------
-// --------------------------
-
-export const CalendarItems = (item) => {
-  return (
-    <View style={styles.eventTopicContainer}>
-      <View style={styles.eventDateContainer}>
-        <View style={styles.eventDate}>
-          <Text style={styles.eventDay}>{item.item.day}</Text>
-          <Text style={styles.eventDateNumber}>{item.item.date}</Text>
-        </View>
-        <RightArrowLong />
-      </View>
-      <View
-        style={{
-          // backgroundColor: "salmon",
-          width: responsiveScreenWidth(75),
-        }}
-      >
-        <View
-          style={[
-            styles.eventTitleAndDateContainer,
-            {
-              backgroundColor:
-                (item.item.status === "proposed new time" && "#619DCC") ||
-                (item.item.status === "accepted" && "#27AC1F") ||
-                (item.item.status === "pending" && "#FF9900") ||
-                (item.item.status === "denied" && "#00C177") ||
-                (item.item.status === "rejected" && "#EF4E52") ||
-                (item.item.status === "finished" && "#7666FF"),
-            },
-          ]}
-        >
-          <Text style={{ color: "white", fontFamily: "WorkSans-Regular" }}>
-            {item.item.title}
-          </Text>
-          <Text
-            style={{
-              color: "white",
-              fontFamily: "WorkSans-Regular",
-              fontSize: responsiveScreenFontSize(1.5),
-            }}
-          >
-            {item.item.time}
-          </Text>
-        </View>
-        <Text style={styles.EditorNameDate}>
-          <Text style={{ color: "black", fontWeight: "500" }}>Edited:</Text>{" "}
-          Abdullah Noman - Feb 20, 2024
-        </Text>
-      </View>
-    </View>
-  );
-};
-
-// --------------------------
-// ----------- Main Components -----------
-// --------------------------
-
-export const CalendarData = () => {
-  const data = [
-    {
-      title: "Show N Tell (Finished)",
-      time: "10PM - 11PM",
-      day: "Mon",
-      date: 6,
-      status: "proposed new time",
-    },
-    {
-      title: "Show N Tell (Finished)",
-      time: "10PM - 11PM",
-      day: "Mon",
-      date: 9,
-      status: "accepted",
-    },
-    {
-      title: "Show N Tell (Finished)",
-      time: "10PM - 11PM",
-      day: "Mon",
-      date: 12,
-      status: "pending",
-    },
-    {
-      title: "Show N Tell (Finished)",
-      time: "10PM - 11PM",
-      day: "Mon",
-      date: 14,
-      status: "denied",
-    },
-    {
-      title: "Show N Tell (Finished)",
-      time: "10PM - 11PM",
-      day: "Mon",
-      date: 25,
-      status: "proposed new time",
-    },
-  ];
-  return (
-    <ScrollView>
-      <View style={CalendarStyles.calenderTopicContainer}>
-        <View style={CalendarStyles.weekContainer}>
-          <Text style={CalendarStyles.weekText}>Week 1</Text>
-          <Text style={CalendarStyles.weekText}>Jan 1 - Jan 7</Text>
-        </View>
-        {data.map(
-          (item, index) =>
-            item.date >= 1 && item.date <= 7 && <CalendarItems item={item} />
-        )}
-
-        <View style={CalendarStyles.weekContainer}>
-          <Text style={CalendarStyles.weekText}>Week 2</Text>
-          <Text style={CalendarStyles.weekText}>Jan 8 - Jan 14</Text>
-        </View>
-        {data.map(
-          (item, index) =>
-            item.date >= 8 && item.date <= 14 && <CalendarItems item={item} />
-        )}
-        <View style={CalendarStyles.weekContainer}>
-          <Text style={CalendarStyles.weekText}>Week 3</Text>
-          <Text style={CalendarStyles.weekText}>Jan 15 - Jan 21</Text>
-        </View>
-        {data.map(
-          (item, index) =>
-            item.date >= 15 && item.date <= 21 && <CalendarItems item={item} />
-        )}
-        <View style={CalendarStyles.weekContainer}>
-          <Text style={CalendarStyles.weekText}>Week 4</Text>
-          <Text style={CalendarStyles.weekText}>Jan 22 - Jan 28</Text>
-        </View>
-        {data.map(
-          (item, index) =>
-            item.date >= 22 && item.date <= 28 && <CalendarItems item={item} />
-        )}
-        <View style={CalendarStyles.weekContainer}>
-          <Text style={CalendarStyles.weekText}>Week 5</Text>
-          <Text style={CalendarStyles.weekText}>Jan 29 - Feb 4</Text>
-        </View>
-        {data.map(
-          (item, index) =>
-            item.date >= 29 && item.date <= 31 && <CalendarItems item={item} />
-        )}
-      </View>
-    </ScrollView>
-  );
-};
+//.........................................................
 
 const CalendarStyles = StyleSheet.create({
   eventDay: {
@@ -284,7 +133,183 @@ const CalendarStyles = StyleSheet.create({
     // width: "100%",
     backgroundColor: "white",
   },
+  viewWidth:{
+    // backgroundColor: "salmon",
+    width: responsiveScreenWidth(65),
+  }
 });
+
+//...........................................
+
+
+// --------------------------
+// ----------- Calendar Item Components -----------
+// --------------------------
+
+export const CalendarItems = (item) => {
+  const [fontsLoaded] = useFonts({
+    "WorkSans-Regular": require("../../assets/Fonts/WorkSans-Regular.ttf"),
+    "WorkSans-Black": require("../../assets/Fonts/WorkSans-Black.ttf"),
+    "WorkSans-Medium": require("../../assets/Fonts/WorkSans-Medium.ttf"),
+    "Inter-Medium": require("../../assets/Fonts/Inter-Medium.ttf"),
+  });
+  if (!fontsLoaded) {
+    return <Text>Loading Font...</Text>;
+  }
+  return (
+    <View style={CalendarStyles.eventTopicContainer}>
+      <View style={CalendarStyles.eventDateContainer}>
+        <View style={CalendarStyles.eventDate}>
+          <Text style={CalendarStyles.eventDay}>{item.item.day}</Text>
+          <Text style={CalendarStyles.eventDateNumber}>{item.item.date}</Text>
+        </View>
+        <RightArrowLong />
+      </View>
+      <View
+        style={CalendarStyles.viewWidth}
+      >
+        <View
+          style={[
+            CalendarStyles.eventTitleAndDateContainer,
+            {
+              backgroundColor:
+                (item.item.status === "proposed new time" && "#619DCC") ||
+                (item.item.status === "accepted" && "#27AC1F") ||
+                (item.item.status === "pending" && "#FF9900") ||
+                (item.item.status === "denied" && "#00C177") ||
+                (item.item.status === "rejected" && "#EF4E52") ||
+                (item.item.status === "finished" && "#7666FF"),
+            },
+          ]}
+        >
+          <Text style={{ color: "white", fontFamily: "WorkSans-Regular" }}>
+            {item.item.title}
+          </Text>
+          <Text
+            style={{
+              color: "white",
+              fontFamily: "WorkSans-Regular",
+              fontSize: responsiveScreenFontSize(1.5),
+            }}
+          >
+            {item.item.time}
+          </Text>
+        </View>
+        <Text style={CalendarStyles.EditorNameDate}>
+          <Text style={{ color: "black", fontWeight: "500" }}>Edited:</Text>{" "}
+          Abdullah Noman - Feb 20, 2024
+        </Text>
+      </View>
+    </View>
+  );
+};
+
+// --------------------------
+// ----------- Main Components -----------
+// --------------------------
+
+export const CalendarData = () => {
+  const [fontsLoaded] = useFonts({
+    "WorkSans-Regular": require("../../assets/Fonts/WorkSans-Regular.ttf"),
+    "WorkSans-Black": require("../../assets/Fonts/WorkSans-Black.ttf"),
+    "WorkSans-Medium": require("../../assets/Fonts/WorkSans-Medium.ttf"),
+    "Inter-Medium": require("../../assets/Fonts/Inter-Medium.ttf"),
+  });
+  if (!fontsLoaded) {
+    return <Text>Loading Font...</Text>;
+  }
+  const data = [
+    {
+      id:1,
+      title: "Show N Tell (Finished)",
+      time: "10PM - 11PM",
+      day: "Mon",
+      date: 6,
+      status: "proposed new time",
+    },
+    {
+      id:2,
+      title: "Show N Tell (Finished)",
+      time: "10PM - 11PM",
+      day: "Mon",
+      date: 9,
+      status: "accepted",
+    },
+    {
+      id:3,
+      title: "Show N Tell (Finished)",
+      time: "10PM - 11PM",
+      day: "Mon",
+      date: 12,
+      status: "pending",
+    },
+    {
+      id:4,
+      title: "Show N Tell (Finished)",
+      time: "10PM - 11PM",
+      day: "Mon",
+      date: 14,
+      status: "denied",
+    },
+    {
+      id:5,
+      title: "Show N Tell (Finished)",
+      time: "10PM - 11PM",
+      day: "Mon",
+      date: 25,
+      status: "proposed new time",
+    },
+  ];
+  return (
+    <ScrollView>
+      <View style={CalendarStyles.calenderTopicContainer}>
+        <View style={CalendarStyles.weekContainer}>
+          <Text style={CalendarStyles.weekText}>Week 1</Text>
+          <Text style={CalendarStyles.weekText}>Jan 1 - Jan 7</Text>
+        </View>
+        {data.map(
+          (item, index) =>
+            item.date >= 1 && item.date <= 7 && <CalendarItems key={item.id} item={item} />
+        )}
+
+        <View style={CalendarStyles.weekContainer}>
+          <Text style={CalendarStyles.weekText}>Week 2</Text>
+          <Text style={CalendarStyles.weekText}>Jan 8 - Jan 14</Text>
+        </View>
+        {data.map(
+          (item, index) =>
+            item.date >= 8 && item.date <= 14 && <CalendarItems key={item.id} item={item} />
+        )}
+        <View style={CalendarStyles.weekContainer}>
+          <Text style={CalendarStyles.weekText}>Week 3</Text>
+          <Text style={CalendarStyles.weekText}>Jan 15 - Jan 21</Text>
+        </View>
+        {data.map(
+          (item, index) =>
+            item.date >= 15 && item.date <= 21 && <CalendarItems key={item.id} item={item} />
+        )}
+        <View style={CalendarStyles.weekContainer}>
+          <Text style={CalendarStyles.weekText}>Week 4</Text>
+          <Text style={CalendarStyles.weekText}>Jan 22 - Jan 28</Text>
+        </View>
+        {data.map(
+          (item, index) =>
+            item.date >= 22 && item.date <= 28 && <CalendarItems key={item.id} item={item} />
+        )}
+        <View style={CalendarStyles.weekContainer}>
+          <Text style={CalendarStyles.weekText}>Week 5</Text>
+          <Text style={CalendarStyles.weekText}>Jan 29 - Feb 4</Text>
+        </View>
+        {data.map(
+          (item, index) =>
+            item.date >= 29 && item.date <= 31 && <CalendarItems key={item.id} item={item} />
+        )}
+      </View>
+    </ScrollView>
+  );
+};
+
+
 
 // Main Components.......................................
 
@@ -294,6 +319,7 @@ const MyCalendar = () => {
     "WorkSans-Regular": require("../../assets/Fonts/WorkSans-Regular.ttf"),
     "WorkSans-Black": require("../../assets/Fonts/WorkSans-Black.ttf"),
     "WorkSans-Medium": require("../../assets/Fonts/WorkSans-Medium.ttf"),
+    "Inter-Medium": require("../../assets/Fonts/Inter-Medium.ttf"),
   });
   if (!fontsLoaded) {
     return <Text>Loading Font...</Text>;
@@ -301,6 +327,7 @@ const MyCalendar = () => {
   return (
     <View style={styles.container}>
       <CalendarHeading />
+      <View style={styles.viewContainer}>
       <ScrollView>
         <View>
           <Calendar
@@ -347,6 +374,7 @@ const MyCalendar = () => {
         </View>
         <CalendarData />
       </ScrollView>
+      </View>
     </View>
   );
 };
@@ -356,8 +384,17 @@ export default MyCalendar;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "white",
-    paddingHorizontal: responsiveScreenWidth(4),
+    backgroundColor: "#f8f8f8",
+    paddingHorizontal: responsiveScreenWidth(5),
+ 
+  },
+  viewContainer:{
+    backgroundColor:'white',
+    height:responsiveScreenHeight(80),
+    borderRadius:5,
+    borderWidth:1,
+    padding:4,
+    borderColor:'rgba(0,0,0,0.06)'
   },
   dotContainer: {
     flexDirection: "row",
