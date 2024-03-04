@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   ScrollView,
   StyleSheet,
@@ -54,11 +54,8 @@ const calenderHeadingStyles = StyleSheet.create({
   },
   headerContent: {
     marginTop: responsiveScreenHeight(6),
-
-    marginLeft: responsiveScreenWidth(5),
     flexDirection: "row",
     justifyContent: "space-between",
-    gap: 10,
     alignItems: "center",
   },
   title: {
