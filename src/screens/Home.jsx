@@ -57,6 +57,11 @@ const Home = () => {
           <Text style={styles.text}>Calendar</Text>
         </View>
       </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate("ChapterModules")}>
+        <View style={styles.btn}>
+          <Text style={styles.text}>ChapterModules</Text>
+        </View>
+      </TouchableOpacity>
     </View>
   );
 };
