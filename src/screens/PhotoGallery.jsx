@@ -53,7 +53,7 @@ const PhotoGallery = () => {
       <View style={styles.headerTop}>
         <HeadingBig title={"Photo Gallery"} />
       </View>
-      <HeaderSmall title={"Select one photo"} />
+      <HeaderSmall title={"Kindly select one photo"} />
       <View style={styles.mediaContainer}>
         <FlatList
           data={media}

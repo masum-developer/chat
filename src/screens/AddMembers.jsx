@@ -23,6 +23,7 @@ import SearchClickIconSvgComponent from "../svg/SearchClickIconSvgComponent";
 import UncheckIconSvgComponent from "../svg/UncheckIconSvgComponent";
 import CheckIconSvgComponent from "../svg/CheckIconSvgComponent";
 import CircleIconSvgComponent from "../svg/CircleIconSvgComponent";
+import AddMembersTitle from "../components/AddMembersTitle";
 const AddMembers = () => {
   const navigation = useNavigation();
   const [modalVisible, setModalVisible] = useState(false);
@@ -60,16 +61,21 @@ const AddMembers = () => {
         {/** Modal start here **/}
         <Modal
           isVisible={modalVisible}
-          onSwipeComplete={() => setModalVisible(false)}
-          swipeDirection="up"
+    
           onBackdropPress={() => setModalVisible(false)}
         >
-          <ScrollView style={styles.modalContainer}>
+          <View style={styles.modalContainer}>
             <View style={styles.modalStyle}>
               <AddMembersHeader
-                text={"Add Members"}
+                text={"Back"}
                 toggleModal={toggleModal}
+                
               />
+
+          
+
+
+          <AddMembersTitle/>
 
               <View style={styles.topContainer}>
                 {/* searc */}
@@ -85,7 +91,7 @@ const AddMembers = () => {
               <View>
                 <Text style={styles.allContact}>All Contact</Text>
               </View>
-              <View>
+              <ScrollView>
                 {/* Show User List*/}
                 <View style={styles.userList}>
                   {users.map((user, index) => (
@@ -113,9 +119,9 @@ const AddMembers = () => {
                     </View>
                   ))}
                 </View>
-              </View>
+              </ScrollView>
             </View>
-          </ScrollView>
+          </View>
         </Modal>
         {/** Modal end here **/}
       </View>
@@ -151,7 +157,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
     paddingHorizontal: responsiveScreenWidth(4.5),
     width: responsiveScreenWidth(90),
-    height: responsiveScreenHeight(69.5),
+    height: responsiveScreenHeight(74),
   },
 
   btn: {

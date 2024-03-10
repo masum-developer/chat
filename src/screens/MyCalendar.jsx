@@ -22,6 +22,7 @@ import DotComponent from "../components/DotComponent";
 import { useNavigation } from "@react-navigation/native";
 import PlusCircleSvgComponent from "../svg/PlusCircleSvgComponent";
 import RightArrowLong from "../svg/RightArrowLong";
+import LineSvgComponentChapterModule from "../svg/LineSvgComponentChapterModule";
 
 export const CalendarHeading = () => {
   const navigation = useNavigation();
@@ -59,15 +60,14 @@ const calenderHeadingStyles = StyleSheet.create({
     alignItems: "center",
   },
   title: {
-    fontSize: responsiveScreenFontSize(2.3),
-    fontWeight: "500",
-    color: "#546A7E",
+    fontSize: responsiveScreenFontSize(2.4),
+    color: 'rgba(11, 42, 70, 1)',
     fontFamily: "Inter-Medium",
     fontWeight: "500",
   },
   btn: {
     width: responsiveScreenWidth(30),
-    height: responsiveScreenHeight(5),
+    height: responsiveScreenHeight(4),
     backgroundColor: "#27AC1F",
     flexDirection: "row",
     alignItems: "center",
@@ -133,6 +133,11 @@ const CalendarStyles = StyleSheet.create({
   viewWidth:{
     // backgroundColor: "salmon",
     width: responsiveScreenWidth(65),
+  },
+  heading:{
+    fontSize: responsiveScreenFontSize(2.5),
+    color:'rgba(11, 42, 70, 1)',
+    fontFamily:'Inter-Medium'
   }
 });
 
@@ -260,6 +265,9 @@ export const CalendarData = () => {
   return (
     <ScrollView>
       <View style={CalendarStyles.calenderTopicContainer}>
+      <View>
+          <Text style={CalendarStyles.heading}>My Events</Text>
+        </View>
         <View style={CalendarStyles.weekContainer}>
           <Text style={CalendarStyles.weekText}>Week 1</Text>
           <Text style={CalendarStyles.weekText}>Jan 1 - Jan 7</Text>
@@ -368,7 +376,9 @@ const MyCalendar = () => {
 
         <View style={styles.line}>
           <LineSvgComponent />
+          
         </View>
+       
         <CalendarData />
       </ScrollView>
       </View>

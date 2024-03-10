@@ -18,6 +18,11 @@ const useData = [{
         name: "Priyanka Parvej",
         image: "https://i.ibb.co/h9YTkLN/priyankaparvej.png",
     },
+    {
+        id: 5,
+        name: "Priyanka Parvej",
+        image: "https://i.ibb.co/h9YTkLN/priyankaparvej.png",
+    },
 
 ];
 

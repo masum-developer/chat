@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import {
-  responsiveHeight,
   responsiveScreenHeight,
-  responsiveWidth,
+  responsiveScreenWidth,
   responsiveFontSize,
 } from "react-native-responsive-dimensions";
 
@@ -49,7 +48,7 @@ const RemoveMessage = () => {
                 </Text>
               </View>
               <TouchableOpacity
-                style={{ marginTop: 10, marginRight: 2 }}
+                style={styles.closeIcon}
                 onPress={toggleModal}
               >
                 <CloseIconSvgComponent />
@@ -87,41 +86,45 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderColor: "gray",
     backgroundColor: "#FFFFFF",
-    width: responsiveWidth(90),
-    height: responsiveHeight(19),
-    paddingHorizontal: responsiveWidth(2),
-    marginBottom: responsiveHeight(8),
+    width: responsiveScreenWidth(90),
+    height: responsiveScreenHeight(20),
+    paddingHorizontal: responsiveScreenWidth(2),
+    marginBottom: responsiveScreenHeight(8),
   },
   modalTop: {
     flexDirection: "row",
     justifyContent: "flex-end",
   },
   textContainer: {
-    width: responsiveWidth(60),
+    width: responsiveScreenWidth(60),
   },
 
   modalText: {
-    marginTop: responsiveHeight(3),
-    marginRight: responsiveWidth(5),
-    fontSize: responsiveFontSize(2.3),
+    marginTop: responsiveScreenHeight(2.5),
+    marginRight: responsiveScreenWidth(8),
+    fontSize: responsiveFontSize(2.2),
     textAlign: "center",
     fontFamily: "WorkSans-Medium",
     fontWeight: "500",
     color: "rgba(0, 0, 0, 0.8)",
+    marginBottom:responsiveScreenHeight(2),
   },
   modalBottom: {
     flexDirection: "row",
     justifyContent: "space-between",
-    width: responsiveWidth(80),
-    height: responsiveHeight(5),
+    width: responsiveScreenWidth(80),
+    height: responsiveScreenHeight(5),
     backgroundColor: "#27ac1f",
-    marginTop: responsiveHeight(2),
+    marginTop: responsiveScreenHeight(1),
+    
     alignSelf: "center",
     borderRadius: 8,
     alignItems: "center",
-    paddingHorizontal: responsiveWidth(4),
+    paddingHorizontal: responsiveScreenWidth(4),
     backgroundColor: "#ffe5e5",
   },
+  closeIcon:
+  { marginTop: responsiveScreenHeight(1.5), marginRight: responsiveScreenWidth(2)},
 
   btnText: {
     color: "#FF0000",
@@ -130,14 +133,14 @@ const styles = StyleSheet.create({
     fontSize: responsiveFontSize(1.7),
   },
   btn: {
-    width: responsiveWidth(40),
-    height: responsiveHeight(5),
+    width: responsiveScreenWidth(40),
+    height: responsiveScreenHeight(5),
     backgroundColor: "plum",
-    marginBottom: responsiveHeight(3),
+    marginBottom: responsiveScreenHeight(3),
   },
   btnTextColor: {
     alignSelf: "center",
-    paddingTop: responsiveHeight(1),
+    paddingTop: responsiveScreenHeight(1),
     color: "#fff",
   },
 });

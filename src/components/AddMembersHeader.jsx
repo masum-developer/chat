@@ -8,12 +8,14 @@ import {
 import { useFonts } from "expo-font";
 import SearchIconSvgComponent from "../svg/SearchIconSvgComponent";
 import LeftArrowIconSvgComponent from "../svg/LeftArrowIconSvgComponent";
+import CloseIconSvgComponent from "../svg/CloseIconSvgComponent";
 
 const AddMembersHeader = ({ text, toggleModal }) => {
   const [fontsLoaded] = useFonts({
     "Inter-Regular": require("../../assets/Fonts/Inter-Regular.ttf"),
     "Inter-Bold": require("../../assets/Fonts/Inter-Bold.ttf"),
     "Inter-Medium":require("../../assets/Fonts/Inter-Medium.ttf"),
+    "WorkSans-Regular": require("../../assets/Fonts/WorkSans-Regular.ttf"),
   });
   if (!fontsLoaded) {
     return <Text>Loading Font...</Text>;
@@ -28,8 +30,8 @@ const AddMembersHeader = ({ text, toggleModal }) => {
           <Text style={styles.headerText}>{text}</Text>
         </View>
         <View>
-          <TouchableOpacity onPress={() => {}}>
-            <SearchIconSvgComponent/>
+        <TouchableOpacity onPress={toggleModal}>
+            <CloseIconSvgComponent />
           </TouchableOpacity>
         </View>
       </View>
@@ -64,12 +66,13 @@ const styles = StyleSheet.create({
     width: responsiveScreenWidth(6),
     height: responsiveScreenHeight(3),
   },
+
   headerText: {
-    fontSize: responsiveScreenFontSize(2.3),
-    color: "#474748",
-    marginLeft: responsiveScreenWidth(3),
+    fontSize: responsiveScreenFontSize(2.2),
+    color: "#546A7E",
+    marginLeft: responsiveScreenWidth(2),
+    fontFamily: "Inter-Regular",
     fontWeight: "500",
-    fontFamily: "Inter-Medium",
   },
   line: {
     borderBottomWidth: 1,

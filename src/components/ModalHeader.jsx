@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, Text, View, StyleSheet, TouchableOpacity } from "react-native";
+import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import {
   responsiveScreenHeight,
   responsiveScreenWidth,
@@ -7,8 +7,18 @@ import {
 } from "react-native-responsive-dimensions";
 import LeftArrowIconSvgComponent from "../svg/LeftArrowIconSvgComponent";
 import CloseIconSvgComponent from "../svg/CloseIconSvgComponent";
+import { useFonts } from "expo-font";
 
 const ModalHeader = ({ text, toggleModal }) => {
+    //.......................For using google font................//
+    const [fontsLoaded] = useFonts({
+      "WorkSans-Regular": require("../../assets/Fonts/WorkSans-Regular.ttf"),
+  
+      "WorkSans-Medium": require("../../assets/Fonts/WorkSans-Medium.ttf"),
+    });
+    if (!fontsLoaded) {
+      return <Text>Loading Font...</Text>;
+    }
   return (
     <View >
       <View
@@ -51,10 +61,12 @@ const ModalHeaderStyles = StyleSheet.create({
     height: responsiveScreenHeight(3),
   },
   headerText: {
-    fontSize: responsiveScreenFontSize(3),
-    color: "#474748",
+    fontSize: responsiveScreenFontSize(2),
+    color: "rgba(84, 106, 126, 1)",
     marginLeft: responsiveScreenWidth(2),
     fontWeight: "500",
+    // fontFamily:'Inter-Regular',
+
   },
   line: {
     borderBottomWidth: 1,

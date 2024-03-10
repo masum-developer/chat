@@ -26,65 +26,9 @@ import { useNavigation } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import LeftArrowIconSvgComponent from "../svg/LeftArrowIconSvgComponent";
 import CloseIconSvgComponent from "../svg/CloseIconSvgComponent";
+import ModalNewHeader from "../components/ModalNewHeader";
 
-//.....................Modal Header..............
-export const ModalHeader = ({ text, toggleModal }) => {
-  return (
-    <View >
-      <View
-        style={ModalHeaderStyles.container}
-      >
-        <View style={ModalHeaderStyles.headerTitle}>
-          <TouchableOpacity onPress={toggleModal}>
-            <LeftArrowIconSvgComponent />
-          </TouchableOpacity>
-          <Text style={ModalHeaderStyles.headerText}>{text}</Text>
-        </View>
-        <View>
-          <TouchableOpacity onPress={toggleModal}>
-            <CloseIconSvgComponent />
-          </TouchableOpacity>
-        </View>
-      </View>
 
-      <View style={ModalHeaderStyles.line} />
-    </View>
-  );
-};
-
-const ModalHeaderStyles = StyleSheet.create({
-  container: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    paddingRight: 10,
-  },
-  headerTitle: {
-    flexDirection: "row",
-    alignItems: "center",
-    width: responsiveScreenWidth(40),
-    height: responsiveScreenHeight(9),
-    marginLeft: responsiveScreenWidth(6),
-  },
-  headerImage: {
-    width: responsiveScreenWidth(6),
-    height: responsiveScreenHeight(3),
-  },
-  headerText: {
-    fontSize: responsiveScreenFontSize(3),
-    color: "#474748",
-    marginLeft: responsiveScreenWidth(2),
-    fontWeight: "500",
-  },
-  line: {
-    borderBottomWidth: 1,
-    borderBottomColor: "#d9d9d9",
-    width: responsiveScreenWidth(78),
-    alignSelf: "center",
-  },
-});
-
-//.....................End Modal Header..............
 
 
 //.......................Start Modal Text...........
@@ -106,7 +50,7 @@ export const ModalText = ({ text }) => {
 const ModalTextStyles = StyleSheet.create({
   modalText: {
     marginBottom: responsiveScreenHeight(4),
-    marginTop: responsiveScreenHeight(5),
+    marginTop: responsiveScreenHeight(3),
     textAlign: "center",
     fontSize: responsiveScreenFontSize(2),
     lineHeight: responsiveScreenFontSize(3) * 1, // Adjust the multiple as needed
@@ -129,7 +73,7 @@ const BlockMember = () => {
   const [fontsLoaded] = useFonts({
     "Inter-Regular": require("../../assets/Fonts/Inter-Regular.ttf"),
     "Inter-Medium": require("../../assets/Fonts/Inter-Medium.ttf"),
-    
+
   });
   if (!fontsLoaded) {
     return <Text>Loading Font...</Text>;
@@ -151,7 +95,8 @@ const BlockMember = () => {
           onBackdropPress={() => setModalVisible(false)}
         >
           <View style={styles.modalStyle}>
-            <ModalHeader text={"Block Member"} toggleModal={toggleModal} />
+          
+            <ModalNewHeader text={"Back"} toggleModal={toggleModal} />
             <View style={styles.textContainer}>
               <View>
                 <Text style={styles.modalHeading}>Block this Member</Text>
@@ -217,10 +162,10 @@ const styles = StyleSheet.create({
     width: responsiveScreenWidth(90),
     height: responsiveScreenHeight(40),
   },
-  modalHeading:{
-    fontFamily:'Inter-Medium',
-    fontSize:responsiveScreenFontSize(2.7),
-    alignSelf:'center',
+  modalHeading: {
+    fontFamily: 'Inter-Medium',
+    fontSize: responsiveScreenFontSize(2.7),
+    alignSelf: 'center',
     marginTop: responsiveScreenHeight(2)
   },
 
